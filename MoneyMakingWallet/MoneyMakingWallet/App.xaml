@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MoneyMakingWallet.App">
+	<Application.Resources>
+
+        <!-- Application resource dictionary -->
+        <ResourceDictionary>
+
+            <!--///////////////////////////////////////////////////////////////////////////-->
+            <!--                               Dictionary                                  -->
+            <!--///////////////////////////////////////////////////////////////////////////-->
+            <x:String x:Key="AlertTitle">Message</x:String>
+            <x:String x:Key="AlertOk">Ok</x:String>
+            <x:String x:Key="GeneralError">There was a problem. Please try again later</x:String>
+            <x:String x:Key="Receive">Receive</x:String>
+            <x:String x:Key="Send">Send</x:String>
+            <x:String x:Key="Balance">Balance</x:String>
+            <x:String x:Key="MyAddress">My Address</x:String>
+            <x:String x:Key="PayTo">Pay To</x:String>
+            <x:String x:Key="NameOrAddress">name or address</x:String>
+            <x:String x:Key="Amount">Amount</x:String>
+            <x:String x:Key="UseAllFunds">Use All Funds</x:String>
+            <x:String x:Key="AdvanceSettings">Advance Settings</x:String>
+            <x:String x:Key="GasPrice">Gas Price</x:String>
+            <x:String x:Key="GasLimit">Gas Limit</x:String>
+            <x:String x:Key="Input">Input</x:String>
+            <x:String x:Key="Nonce">Nonce</x:String>
+            <x:String x:Key="Overview">Overview</x:String>
+            
+            <!--///////////////////////////////////////////////////////////////////////////-->
+            <!--                                   COLORS                                  -->
+            <!--///////////////////////////////////////////////////////////////////////////-->
+
+            <Color x:Key="Main_Primary">#00A5DB</Color>
+            <Color x:Key="General_DefaultColor">#9b9b9b</Color>
+            <Color x:Key="General_ButtonColor">#237AFC</Color>
+
+            <!--///////////////////////////////////////////////////////////////////////////-->
+        </ResourceDictionary>
+
+    </Application.Resources>
+</Application>
