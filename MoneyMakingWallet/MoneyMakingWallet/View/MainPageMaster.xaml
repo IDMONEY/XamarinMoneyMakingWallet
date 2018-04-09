@@ -10,7 +10,7 @@
               ItemsSource="{Binding lstCurrencies}">
             <ListView.Header>
                 <StackLayout>
-                    <Grid BackgroundColor="#03A9F4">
+                    <Grid BackgroundColor="#6D6E71">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="10"/>
                             <ColumnDefinition Width="*"/>
@@ -26,7 +26,8 @@
                               Grid.Column="1"
                               Grid.Row="2"
                               Text="Money Making Wallet"
-                              Style="{DynamicResource SubtitleStyle}"/>
+                              TextColor="White"
+                              FontSize="20"/>
                     </Grid>
                     <Grid x:Name="btnOverview" Padding="15,10" HorizontalOptions="FillAndExpand">
                         <Grid.ColumnDefinitions>
