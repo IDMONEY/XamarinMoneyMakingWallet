@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="IDMONEY.IO.View.LoginView"
+             xmlns:local="clr-namespace:IDMONEY.IO.View;assembly=IDMONEY.IO"
+             BackgroundImage="splash.png">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+
+        <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="FillAndExpand">
+
+            <Frame CornerRadius="20" BackgroundColor="White" Opacity="0.9" Margin="15,0">
+                <StackLayout Padding="0" Spacing="5" HorizontalOptions="FillAndExpand" >
+                    <StackLayout Orientation="Horizontal" Padding="0" Spacing="5" HorizontalOptions="FillAndExpand">
+                        <Image Source="id_card_icon.png" Margin="0,0,5,0" HeightRequest="20" WidthRequest="20"/>
+                        <Entry HorizontalOptions="FillAndExpand" 
+                               TextColor="{StaticResource General_DefaultColor}" 
+                               Keyboard="Email"
+                               PlaceholderColor="{StaticResource General_DefaultColor}" 
+                               Text="{Binding Email, Mode=TwoWay}" 
+                               Placeholder="{StaticResource Email}" >
+                            <Entry.Behaviors>
+                                <local:EventToCommandBehavior EventName="TextChanged" Command="{Binding ValidateUserCommand}" />
+                            </Entry.Behaviors>
+                        </Entry>
+                    </StackLayout>
+
+                    <!--Password Entry-->
+                    <StackLayout Orientation="Horizontal" Padding="0" Spacing="5" HorizontalOptions="FillAndExpand">
+                        <Image Source="password_icon.png" Margin="0,0,5,0" HeightRequest="20" WidthRequest="20"/>
+                        <Entry HorizontalOptions="FillAndExpand" 
+                               TextColor="{StaticResource General_DefaultColor}" 
+                               PlaceholderColor="{StaticResource General_DefaultColor}" 
+                               Text="{Binding Password, Mode=TwoWay}" 
+                       IsPassword="true" Placeholder="{StaticResource Password}">
+                            <Entry.Behaviors>
+                                <local:EventToCommandBehavior EventName="TextChanged" Command="{Binding ValidateUserCommand}" />
+                            </Entry.Behaviors>
+                        </Entry>
+                    </StackLayout>
+
+                    <Label Text="{StaticResource ForgotYourPassword}" TextColor="{StaticResource General_DefaultColor}">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding GoToForgotPasswordCommand}"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+
+                    <!--Buttons-->
+                    <Button Text="{StaticResource Login}" 
+                        TextColor="White" 
+                        BackgroundColor="#D6B353" 
+                        BorderRadius="25" 
+                        Command="{Binding AuthenticateCommand}" 
+                        IsEnabled="{Binding IsValidUser}"/>
+
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                        <Label Text="{StaticResource NewToUs}" TextColor="{StaticResource General_DefaultColor}"/>
+                        <Label Text="{StaticResource SignUp}" TextColor="Blue">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding GoToRegisterUserCommand}"/>
+                            </Label.GestureRecognizers>
+                        </Label>
+                    </StackLayout>
+                </StackLayout>
+            </Frame>
+        </StackLayout>
+
+        <!--Loader-->
+        <ContentView IsVisible="{Binding IsBusy}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <ActivityIndicator IsVisible="True" IsRunning="{Binding IsBusy}" Color="{StaticResource General_DefaultColor}" 
+                           WidthRequest="80" HeightRequest="80" VerticalOptions="Center" HorizontalOptions="Center"/>
+        </ContentView>
+
+    </Grid>
+</ContentPage>

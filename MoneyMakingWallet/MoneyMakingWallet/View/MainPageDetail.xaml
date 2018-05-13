@@ -9,6 +9,9 @@
             <local:NumberConverter x:Key="cnvNumberConverter"></local:NumberConverter>
         </ResourceDictionary>
     </ContentPage.Resources>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Order="Secondary" Text="{StaticResource Logout}" Priority="1" Command="{Binding ToolbarTappedCommand}" CommandParameter="Logout"/>
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="White">
             <StackLayout VerticalOptions="Start" HorizontalOptions="CenterAndExpand" Spacing="0" Margin="0,50,0,0">
@@ -23,7 +26,7 @@
               ItemsSource="{Binding lstBalances}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <ViewCell>
+                        <ViewCell IsEnabled="False" Tapped="Cell_OnTapped">
                             <Grid Padding="15,10" HorizontalOptions="FillAndExpand" RowSpacing="0">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="40"/>

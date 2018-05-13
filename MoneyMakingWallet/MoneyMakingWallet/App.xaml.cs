@@ -1,4 +1,5 @@
-﻿using IDMONEY.IO.View;
+﻿using IDMONEY.IO.Model;
+using IDMONEY.IO.View;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,7 +7,7 @@ using System.Text;
 
 using Xamarin.Forms;
 
-namespace MoneyMakingWallet
+namespace IDMONEY.IO
 {
 	public partial class App : Application
 	{
@@ -14,8 +15,15 @@ namespace MoneyMakingWallet
 		{
 			InitializeComponent();
 
-			MainPage = new MainPage();
-		}
+            if (UserRequest.GetUser() == null)
+            {
+                MainPage = new LoginView();
+            }
+            else
+            {
+                MainPage = new MainPage();
+            }
+        }
 
 		protected override void OnStart ()
 		{

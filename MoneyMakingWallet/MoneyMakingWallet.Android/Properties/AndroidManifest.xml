@@ -1,7 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="io.idmoney.MoneyMakingWallet" android:installLocation="internalOnly" android:versionCode="1" android:versionName="1.0">
-	<uses-sdk android:minSdkVersion="16" android:targetSdkVersion="23" />
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="io.idmoney.MoneyMakingWallet" android:installLocation="internalOnly" android:versionCode="1" android:versionName="1.0.0.2">
+	<uses-sdk android:minSdkVersion="10" android:targetSdkVersion="23" />
 	<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-	<application android:label="MoneyMakingWallet.Android" android:icon="@drawable/icon"></application>
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+	<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+	<uses-permission android:name="android.permission.INTERNET" />
+	<application android:label="Money Making Wallet" android:icon="@drawable/icon"></application>
 </manifest>

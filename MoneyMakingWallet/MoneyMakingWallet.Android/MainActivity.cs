@@ -7,6 +7,7 @@ using Android.Views;
 using Android.Widget;
 using Android.OS;
 using Acr.UserDialogs;
+using IDMONEY.IO;
 
 namespace MoneyMakingWallet.Droid
 {
