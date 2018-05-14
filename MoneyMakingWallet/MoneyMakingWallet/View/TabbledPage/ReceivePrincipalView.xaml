@@ -8,10 +8,10 @@
             <Label Text="{StaticResource MyAddress}" TextColor="{StaticResource General_DefaultColor}" VerticalOptions="Start" Margin="0,20,0,5"
                    HorizontalOptions="CenterAndExpand" FontAttributes="Bold" FontSize="14"/>
 
-            <Label Text="{Binding CodeQR}" VerticalOptions="Start" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center" XAlign="Center"
+            <Label Text="{Binding MyAddress}" VerticalOptions="Start" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center" XAlign="Center"
                    FontSize="14" TextColor="{StaticResource General_DefaultColor}" Margin="40,0"/>
 
-            <Image Source="codeqr.png" VerticalOptions="Start" HorizontalOptions="CenterAndExpand" HeightRequest="200" WidthRequest="200" Aspect="AspectFill"/>
+            <local:GenerateCodeQR CodeQR="{Binding CodeQR}" HorizontalOptions="FillAndExpand" Margin="20,0" HeightRequest="200" WidthRequest="200"/>
 
             <Grid RowSpacing="0" Margin="15,10,15,0">
                 <Grid.RowDefinitions>
@@ -25,6 +25,9 @@
 
                 <local:NumberEntry Grid.Column="0" Grid.Row="0" FontSize="14" TextColor="{StaticResource General_DefaultColor}" HorizontalTextAlignment="End" 
                                       HorizontalOptions="FillAndExpand" NumberType="Amount" VerticalOptions="End" Amount="{Binding Balance.CryptoAmount}">
+                    <Entry.Behaviors>
+                        <local:EventToCommandBehavior EventName="TextChanged" Command="{Binding ChangeAmountCommand}" CommandParameter="CryptoCurrency"/>
+                    </Entry.Behaviors>
                 </local:NumberEntry>
                 <Label Grid.Column="0" Grid.Row="1" Text="{Binding Balance.CryptoCurrency.Code}" TextColor="{StaticResource General_DefaultColor}" HorizontalOptions="End" FontAttributes="Bold" FontSize="12"/>
 

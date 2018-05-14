@@ -15,11 +15,13 @@ namespace IDMONEY.IO.Model
         [PrimaryKey]
         public long Id { get; set; }
 
-        public string Address { get; set; }
-
         public string Email { get; set; }
 
+        public string Address { get; set; }
+
         public string Password { get; set; }
+
+        public string Privatekey { get; set; }
 
         public string Token { get; set; }
     }
@@ -53,7 +55,8 @@ namespace IDMONEY.IO.Model
                 //Insert
                 realm.Write(() =>
                 {
-                    realm.Add(new UserModel { Token = token, Address = user.Address, Email = user.Email, Id = user.Id, Password = user.Password });
+                    realm.Add(new UserModel { Token = token, Address = user.Address, Email = user.Email, Id = user.Id,
+                                            Password = user.Password, Privatekey = user.Privatekey });
                 });
             }
             else
@@ -62,7 +65,9 @@ namespace IDMONEY.IO.Model
                 {
                     realm.RemoveAll();
 
-                    var userModel = new UserModel { Token = token, Address = user.Address, Email = user.Email, Id = user.Id, Password = user.Password };
+                    var userModel = new UserModel { Token = token, Address = user.Address, Email = user.Email,
+                                    Id = user.Id, Password = user.Password, Privatekey = user.Privatekey
+                    };
 
                     realm.Add(userModel);
 

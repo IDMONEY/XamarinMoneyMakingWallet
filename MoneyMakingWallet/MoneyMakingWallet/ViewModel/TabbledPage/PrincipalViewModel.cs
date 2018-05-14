@@ -3,6 +3,8 @@ using IDMONEY.IO.Service;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Windows.Input;
+using Xamarin.Forms;
 
 namespace IDMONEY.IO.ViewModel
 {
@@ -39,23 +41,37 @@ namespace IDMONEY.IO.ViewModel
 
         public string CodeQR
         {
-            get { return "0x46 ed94 c49a b4ab 05743 dea4 655b e90d d23a 4000e"; }
+            get { return string.Format("{0} - {1}", user.Address, Balance.CryptoAmount); }
         }
+
+        public string MyAddress
+        {
+            get { return user.Address; }
+        }
+
+        private UserModel user;
         #endregion
 
         #region Commands
-
+        public ICommand ChangeAmountCommand { get; private set; }
         #endregion
 
         #region Private Methods
         private void initCommands()
         {
+            ChangeAmountCommand = new Command<string>(ChangeAmount);
+        }
 
+        private void ChangeAmount(string option)
+        {
+
+            OnPropertyChanged("CodeQR");
         }
 
         private void initClass(CurrencyModel currency)
         {
-            Balance = BalanceService.GetBalance(currency); 
+            user = UserRequest.GetUser();
+            Balance = BalanceService.GetBalance(currency);
         }
         #endregion
     }
