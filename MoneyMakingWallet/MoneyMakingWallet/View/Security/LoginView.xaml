@@ -14,33 +14,63 @@
 
             <Frame CornerRadius="20" BackgroundColor="White" Opacity="0.9" Margin="15,0">
                 <StackLayout Padding="0" Spacing="5" HorizontalOptions="FillAndExpand" >
-                    <StackLayout Orientation="Horizontal" Padding="0" Spacing="5" HorizontalOptions="FillAndExpand">
-                        <Image Source="id_card_icon.png" Margin="0,0,5,0" HeightRequest="20" WidthRequest="20"/>
-                        <Entry HorizontalOptions="FillAndExpand" 
-                               TextColor="{StaticResource General_DefaultColor}" 
-                               Keyboard="Email"
-                               PlaceholderColor="{StaticResource General_DefaultColor}" 
+                    <Grid RowSpacing="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="17"/>
+                        </Grid.RowDefinitions>
+
+                        <StackLayout Grid.Column="0" Grid.Row="0"
+                                     Orientation="Horizontal" Padding="0" Spacing="5" HorizontalOptions="FillAndExpand">
+                            <Image Source="id_card_icon.png" Margin="0,0,5,0" HeightRequest="20" WidthRequest="20"/>
+                            <Entry  HorizontalOptions="FillAndExpand" 
+                               TextColor="{Binding Source={x:Reference EmailChangeValidator}, Path=ColorValidation}" 
+                               PlaceholderColor="{StaticResource General_DefaultColor}" Keyboard="Email"
                                Text="{Binding Email, Mode=TwoWay}" 
                                Placeholder="{StaticResource Email}" >
-                            <Entry.Behaviors>
-                                <local:EventToCommandBehavior EventName="TextChanged" Command="{Binding ValidateUserCommand}" />
-                            </Entry.Behaviors>
-                        </Entry>
-                    </StackLayout>
+                                <Entry.Behaviors>
+                                    <local:EmailChangeBehavior x:Name="EmailChangeValidator"/>
+                                    <local:EventToCommandBehavior EventName="TextChanged" Command="{Binding ValidateUserCommand}" />
+                                </Entry.Behaviors>
+                            </Entry>
+                        </StackLayout>
+                        <Label Grid.Column="0" Grid.Row="1" Text="{StaticResource EmailIsRequired}" FontAttributes="Italic" FontSize="12" TextColor="{StaticResource General_ColorError}"
+                               IsVisible="{Binding Source={x:Reference EmailChangeValidator}, Path=IsEmptyOrNull}"/>
+                        <Label Grid.Column="0" Grid.Row="1" Text="{StaticResource EmailIsInvalid}" FontAttributes="Italic" FontSize="12" TextColor="{StaticResource General_ColorError}"
+                               IsVisible="{Binding Source={x:Reference EmailChangeValidator}, Path=IsInvalid}"/>
+                    </Grid>
+
 
                     <!--Password Entry-->
-                    <StackLayout Orientation="Horizontal" Padding="0" Spacing="5" HorizontalOptions="FillAndExpand">
-                        <Image Source="password_icon.png" Margin="0,0,5,0" HeightRequest="20" WidthRequest="20"/>
-                        <Entry HorizontalOptions="FillAndExpand" 
+                    <Grid RowSpacing="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="17"/>
+                        </Grid.RowDefinitions>
+                        <StackLayout Grid.Column="0" Grid.Row="0" Orientation="Horizontal" Padding="0" Spacing="5" HorizontalOptions="FillAndExpand">
+                            <Image Source="password_icon.png" Margin="0,0,5,0" HeightRequest="20" WidthRequest="20"/>
+                            <Entry  HorizontalOptions="FillAndExpand" 
                                TextColor="{StaticResource General_DefaultColor}" 
                                PlaceholderColor="{StaticResource General_DefaultColor}" 
                                Text="{Binding Password, Mode=TwoWay}" 
                        IsPassword="true" Placeholder="{StaticResource Password}">
-                            <Entry.Behaviors>
-                                <local:EventToCommandBehavior EventName="TextChanged" Command="{Binding ValidateUserCommand}" />
-                            </Entry.Behaviors>
-                        </Entry>
-                    </StackLayout>
+                                <Entry.Behaviors>
+                                    <local:PasswordChangeBehavior x:Name="PasswordChangeBehavior"/>
+                                    <local:EventToCommandBehavior EventName="TextChanged" Command="{Binding ValidateUserCommand}" />
+                                </Entry.Behaviors>
+                            </Entry>
+                        </StackLayout>
+                        <Label Grid.Column="0" Grid.Row="1" Text="{StaticResource PasswordIsRequired}" FontAttributes="Italic" FontSize="12" TextColor="{StaticResource General_ColorError}"
+                               IsVisible="{Binding Source={x:Reference PasswordChangeBehavior}, Path=IsEmptyOrNull}"/>
+
+                    </Grid>
+
 
                     <Label Text="{StaticResource ForgotYourPassword}" TextColor="{StaticResource General_DefaultColor}">
                         <Label.GestureRecognizers>

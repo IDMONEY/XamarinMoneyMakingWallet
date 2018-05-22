@@ -1,5 +1,6 @@
 ﻿using IDMONEY.IO.Helper;
 using IDMONEY.IO.Model;
+using IDMONEY.IO.Service;
 using IDMONEY.IO.View;
 using IDMONEY.IO.View.Security;
 using System;
@@ -86,7 +87,7 @@ namespace IDMONEY.IO.ViewModel
             {
                 IsBusy = true;
 
-                LoginRequest req = await LoginRequest.LoginUser(Email, Password);
+                LoginService req = await LoginService.LoginUser(Email, Password);
 
                 if (!req.IsSuccessful)
                 {
@@ -96,7 +97,7 @@ namespace IDMONEY.IO.ViewModel
                 }
                 else
                 {
-                    UserRequest.SaveUser(req.User, req.Token);
+                    UserService.SaveUser(req.User, req.Token);
                     App.Current.MainPage = new MainPage();
                     IsBusy = false;
                 }
@@ -121,7 +122,7 @@ namespace IDMONEY.IO.ViewModel
         private void ValidateUser()
         {
             IsValidUser = !string.IsNullOrEmpty(Email) && ValidationHelper.IsValidEmail(Email) &&
-                                   !string.IsNullOrEmpty(Password) && ValidationHelper.IsValidPassword(Password);
+                                   !string.IsNullOrEmpty(Password);// && ValidationHelper.IsValidPassword(Password);
         }
         #endregion
     }

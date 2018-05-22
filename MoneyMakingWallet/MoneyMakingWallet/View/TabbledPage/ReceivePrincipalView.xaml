@@ -24,17 +24,20 @@
                 </Grid.ColumnDefinitions>
 
                 <local:NumberEntry Grid.Column="0" Grid.Row="0" FontSize="14" TextColor="{StaticResource General_DefaultColor}" HorizontalTextAlignment="End" 
-                                      HorizontalOptions="FillAndExpand" NumberType="Amount" VerticalOptions="End" Amount="{Binding Balance.CryptoAmount}">
+                                      HorizontalOptions="FillAndExpand" NumberType="Amount" VerticalOptions="End" Amount="{Binding ReceiveBalance.CryptoAmount}">
                     <Entry.Behaviors>
-                        <local:EventToCommandBehavior EventName="TextChanged" Command="{Binding ChangeAmountCommand}" CommandParameter="CryptoCurrency"/>
+                        <local:EventToCommandBehavior EventName="Unfocused" Command="{Binding ReceiveChangeAmountCommand}" CommandParameter="CryptoCurrency"/>
                     </Entry.Behaviors>
                 </local:NumberEntry>
-                <Label Grid.Column="0" Grid.Row="1" Text="{Binding Balance.CryptoCurrency.Code}" TextColor="{StaticResource General_DefaultColor}" HorizontalOptions="End" FontAttributes="Bold" FontSize="12"/>
+                <Label Grid.Column="0" Grid.Row="1" Text="{Binding ReceiveBalance.CryptoCurrency.Code}" TextColor="{StaticResource General_DefaultColor}" HorizontalOptions="End" FontAttributes="Bold" FontSize="12"/>
 
                 <local:NumberEntry Grid.Column="1" Grid.Row="0" FontSize="14" TextColor="{StaticResource General_DefaultColor}" HorizontalTextAlignment="End" 
-                                      HorizontalOptions="FillAndExpand" NumberType="Amount" VerticalOptions="End" Amount="{Binding Balance.Amount}">
+                                      HorizontalOptions="FillAndExpand" NumberType="Amount" VerticalOptions="End" Amount="{Binding ReceiveBalance.Amount}">
+                    <Entry.Behaviors>
+                        <local:EventToCommandBehavior EventName="Unfocused" Command="{Binding ReceiveChangeAmountCommand}" CommandParameter="Currency"/>
+                    </Entry.Behaviors>
                 </local:NumberEntry>
-                <Label Grid.Column="1" Grid.Row="1" Text="{Binding Balance.Currency.Code}" TextColor="{StaticResource General_DefaultColor}" HorizontalOptions="End" FontAttributes="Bold" FontSize="12"/>
+                <Label Grid.Column="1" Grid.Row="1" Text="{Binding ReceiveBalance.Currency.Code}" TextColor="{StaticResource General_DefaultColor}" HorizontalOptions="End" FontAttributes="Bold" FontSize="12"/>
             </Grid>
 
         </StackLayout>

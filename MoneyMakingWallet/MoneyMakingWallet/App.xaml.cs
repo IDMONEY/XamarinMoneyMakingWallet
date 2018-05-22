@@ -1,4 +1,5 @@
 ﻿using IDMONEY.IO.Model;
+using IDMONEY.IO.Service;
 using IDMONEY.IO.View;
 using System;
 using System.Collections.Generic;
@@ -15,7 +16,7 @@ namespace IDMONEY.IO
 		{
 			InitializeComponent();
 
-            if (UserRequest.GetUser() == null)
+            if (UserService.GetUser() == null)
             {
                 MainPage = new LoginView();
             }

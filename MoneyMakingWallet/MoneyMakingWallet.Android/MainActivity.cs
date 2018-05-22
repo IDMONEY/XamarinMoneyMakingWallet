@@ -32,6 +32,11 @@ namespace MoneyMakingWallet.Droid
 
             LoadApplication(new App());
         }
+
+        public override void OnRequestPermissionsResult(int requestCode, string[] permissions, Permission[] grantResults)
+        {
+            global::ZXing.Net.Mobile.Forms.Android.PermissionsHandler.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+        }
     }
 }
 

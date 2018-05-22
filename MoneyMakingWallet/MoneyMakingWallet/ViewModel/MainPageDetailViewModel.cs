@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 
@@ -35,24 +36,38 @@ namespace IDMONEY.IO.ViewModel
         #region Private Methods
         private void initCommands()
         {
-            ToolbarTappedCommand = new Command<string>(ToolbarTapped);
+            ToolbarTappedCommand = new Command<string>(ToolbarTappedAsync);
         }
 
-        private void ToolbarTapped(string option)
+        private async void ToolbarTappedAsync(string option)
         {
             try
             {
                 switch (option)
                 {
                     case "Logout":
-                        UserRequest.DeleteUser();
+                        UserService.DeleteUser();
                         App.Current.MainPage = new LoginView();
-                    break;
+                        break;
+                    case "DataEntry":
+                        IsBusy = true;
+
+                        Page page = null;
+
+                        await Task.Run(() =>
+                        {
+                            page = new EntryDataView();
+                        });
+
+                        await ((MasterDetailPage)App.Current.MainPage).Detail.Navigation.PushAsync(page);
+
+                        IsBusy = false;
+                        break;
                 }
             }
             catch (Exception ex)
             {
-                
+
                 ErrorHelper.ControlError(ex, false);
             }
         }

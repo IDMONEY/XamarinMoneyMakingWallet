@@ -23,7 +23,7 @@
                             <RowDefinition Height="*"/>
                             <RowDefinition Height="17"/>
                         </Grid.RowDefinitions>
-                        
+
                         <Entry Grid.Column="0" Grid.Row="0" HorizontalOptions="FillAndExpand" 
                                TextColor="{Binding Source={x:Reference EmailChangeValidator}, Path=ColorValidation}" 
                                PlaceholderColor="{StaticResource General_DefaultColor}" Keyboard="Email"
@@ -68,7 +68,7 @@
                         <Label Grid.Column="0" Grid.Row="1" Text="{StaticResource PasswordIsHighStrength}" FontAttributes="Italic" FontSize="12" TextColor="{StaticResource General_ColorSuccessful}"
                                IsVisible="{Binding Source={x:Reference PasswordChangeBehavior}, Path=IsHighStrength}"/>
                     </Grid>
-                    
+
                     <!--Confirm Password Entry-->
                     <Grid RowSpacing="0">
                         <Grid.ColumnDefinitions>

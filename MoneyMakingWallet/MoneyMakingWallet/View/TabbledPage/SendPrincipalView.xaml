@@ -19,9 +19,10 @@
                             <ColumnDefinition Width="30"/>
                         </Grid.ColumnDefinitions>
 
-                        <Entry Grid.Column="0" Grid.Row="0" FontSize="14" Placeholder="{StaticResource NameOrAddress}" TextColor="{StaticResource General_DefaultColor}" HorizontalTextAlignment="Start" HorizontalOptions="FillAndExpand">
+                        <Entry Grid.Column="0" Grid.Row="0" FontSize="14" Placeholder="{StaticResource NameOrAddress}" TextColor="{StaticResource General_DefaultColor}" 
+                               HorizontalTextAlignment="Start" HorizontalOptions="FillAndExpand" Text="{Binding AddressToSend}">
                         </Entry>
-                        <local:ImageButton Grid.Column="1" Grid.Row="0" Source="codeqr.png" Aspect="Fill"/>
+                        <local:ImageButton Grid.Column="1" Grid.Row="0" Source="codeqr.png" Aspect="Fill" Command="{Binding ScanCodeQRCommand}"/>
                     </Grid>
 
                     <Grid RowSpacing="0" Margin="15,10,15,0">
@@ -49,14 +50,20 @@
                         </Grid.ColumnDefinitions>
 
                         <local:NumberEntry Grid.Column="0" Grid.Row="0" FontSize="14" TextColor="{StaticResource General_DefaultColor}" HorizontalTextAlignment="End" 
-                                      HorizontalOptions="FillAndExpand" NumberType="Amount" VerticalOptions="End" Amount="{Binding Balance.CryptoAmount}">
+                                      HorizontalOptions="FillAndExpand" NumberType="Amount" VerticalOptions="End" Amount="{Binding SendBalance.CryptoAmount}">
+                            <Entry.Behaviors>
+                                <local:EventToCommandBehavior EventName="Unfocused" Command="{Binding SendChangeAmountCommand}" CommandParameter="CryptoCurrency"/>
+                            </Entry.Behaviors>
                         </local:NumberEntry>
-                        <Label Grid.Column="0" Grid.Row="1" Text="{Binding Balance.CryptoCurrency.Code}" TextColor="{StaticResource General_DefaultColor}" HorizontalOptions="End" FontAttributes="Bold" FontSize="12"/>
+                        <Label Grid.Column="0" Grid.Row="1" Text="{Binding SendBalance.CryptoCurrency.Code}" TextColor="{StaticResource General_DefaultColor}" HorizontalOptions="End" FontAttributes="Bold" FontSize="12"/>
 
                         <local:NumberEntry Grid.Column="1" Grid.Row="0" FontSize="14" TextColor="{StaticResource General_DefaultColor}" HorizontalTextAlignment="End" 
-                                      HorizontalOptions="FillAndExpand" NumberType="Amount" VerticalOptions="End" Amount="{Binding Balance.Amount}">
+                                      HorizontalOptions="FillAndExpand" NumberType="Amount" VerticalOptions="End" Amount="{Binding SendBalance.Amount}">
+                            <Entry.Behaviors>
+                                <local:EventToCommandBehavior EventName="Unfocused" Command="{Binding SendChangeAmountCommand}" CommandParameter="Currency"/>
+                            </Entry.Behaviors>
                         </local:NumberEntry>
-                        <Label Grid.Column="1" Grid.Row="1" Text="{Binding Balance.Currency.Code}" TextColor="{StaticResource General_DefaultColor}" HorizontalOptions="End" FontAttributes="Bold" FontSize="12"/>
+                        <Label Grid.Column="1" Grid.Row="1" Text="{Binding SendBalance.Currency.Code}" TextColor="{StaticResource General_DefaultColor}" HorizontalOptions="End" FontAttributes="Bold" FontSize="12"/>
                     </Grid>
 
                     <Button Text="{StaticResource AdvanceSettings}" TextColor="{StaticResource General_ButtonColor}" BackgroundColor="Transparent" 

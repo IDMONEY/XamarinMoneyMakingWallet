@@ -45,7 +45,11 @@
             <x:String x:Key="ConfirmPasswordIsRequired">Confirm password is required</x:String>
             <x:String x:Key="PasswordNotMatch">The password does not match</x:String>
             <x:String x:Key="Logout">Logout</x:String>
+            <x:String x:Key="Configuration">Configuration</x:String>
+            <x:String x:Key="DataEntry">Data Entry</x:String>
+            <x:String x:Key="Save">Save</x:String>
             
+
             <!--///////////////////////////////////////////////////////////////////////////-->
             <!--                                   COLORS                                  -->
             <!--///////////////////////////////////////////////////////////////////////////-->

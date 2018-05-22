@@ -1,5 +1,6 @@
 ﻿using IDMONEY.IO.Helper;
 using IDMONEY.IO.Model;
+using IDMONEY.IO.Service;
 using IDMONEY.IO.View;
 using System;
 using System.Collections.Generic;
@@ -89,7 +90,7 @@ namespace IDMONEY.IO.ViewModel
             {
                 IsBusy = true;
 
-                CreateUserRequest req = await CreateUserRequest.CreateUser(Email, Password);
+                CreateUserService req = await CreateUserService.CreateUser(Email, Password);
 
                 if (!req.IsSuccessful)
                 {
@@ -99,7 +100,7 @@ namespace IDMONEY.IO.ViewModel
                 }
                 else
                 {
-                    UserRequest.SaveUser(req.User, req.Token);
+                    UserService.SaveUser(req.User, req.Token);
                     App.Current.MainPage = new MainPage();
                     IsBusy = false;
                 }
