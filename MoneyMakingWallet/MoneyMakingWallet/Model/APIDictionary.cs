@@ -8,6 +8,7 @@ namespace IDMONEY.IO.Model
     public class APIDictionary
     {
         private const string Base = "http://jeancarlos.eastus2.cloudapp.azure.com/WebApiMoneyMakingWallet2/";
+        //private const string Base = "http://54.70.160.109/webapimoneymakingwallet/";
 
         #region Users
         public const string API_CreateUser = Base + "api/User/Create";
