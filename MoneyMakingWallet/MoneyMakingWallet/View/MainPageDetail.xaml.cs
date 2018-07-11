@@ -20,6 +20,13 @@ namespace IDMONEY.IO.View
             BindingContext = new MainPageDetailViewModel();
         }
 
-
+        private void Cell_OnTapped(object sender, EventArgs e)
+        {
+            var viewCell = (ViewCell)sender;
+            if (viewCell.View != null)
+            {
+                viewCell.View.BackgroundColor = Color.White;
+            }
+        }
     }
 }
