@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Application xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MoneyMakingWallet.App">
+             x:Class="IDMONEY.IO.App">
 	<Application.Resources>
 
         <!-- Application resource dictionary -->
@@ -27,14 +27,40 @@
             <x:String x:Key="Input">Input</x:String>
             <x:String x:Key="Nonce">Nonce</x:String>
             <x:String x:Key="Overview">Overview</x:String>
+            <x:String x:Key="Email">Email</x:String>
+            <x:String x:Key="Password">Password</x:String>
+            <x:String x:Key="ForgotYourPassword">Forgot your password?</x:String>
+            <x:String x:Key="Login">Login</x:String>
+            <x:String x:Key="NewToUs">New to us?</x:String>
+            <x:String x:Key="SignUp">Sign up</x:String>
+            <x:String x:Key="Register">Register</x:String>
+            <x:String x:Key="ConfirmPassword">Confirm password</x:String>
+            <x:String x:Key="ResetMyPassword">Reset my password</x:String>
+            <x:String x:Key="EmailIsRequired">Email is required</x:String>
+            <x:String x:Key="EmailIsInvalid">Email is invalid</x:String>
+            <x:String x:Key="PasswordIsRequired">Password is required</x:String>
+            <x:String x:Key="PasswordIsLowStrength">Password is low strength</x:String>
+            <x:String x:Key="PasswordIsMedStrength">Password is medium strength</x:String>
+            <x:String x:Key="PasswordIsHighStrength">Password is high strength</x:String>
+            <x:String x:Key="ConfirmPasswordIsRequired">Confirm password is required</x:String>
+            <x:String x:Key="PasswordNotMatch">The password does not match</x:String>
+            <x:String x:Key="Logout">Logout</x:String>
+            <x:String x:Key="Configuration">Configuration</x:String>
+            <x:String x:Key="DataEntry">Data Entry</x:String>
+            <x:String x:Key="Save">Save</x:String>
             
+
             <!--///////////////////////////////////////////////////////////////////////////-->
             <!--                                   COLORS                                  -->
             <!--///////////////////////////////////////////////////////////////////////////-->
 
             <Color x:Key="Main_Primary">#00A5DB</Color>
             <Color x:Key="General_DefaultColor">#9b9b9b</Color>
+            <Color x:Key="General_ColorError">#F87272</Color>
+            <Color x:Key="General_ColorSuccessful">#76A932</Color>
+            <Color x:Key="General_ColorWarning">#FFAF1E</Color>
             <Color x:Key="General_ButtonColor">#237AFC</Color>
+            
 
             <!--///////////////////////////////////////////////////////////////////////////-->
         </ResourceDictionary>

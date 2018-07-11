@@ -114,11 +114,7 @@ namespace IDMONEY.IO.View
             {
                 NumberEntry entry = (NumberEntry)bindable;
                 entry.Amount = (decimal)newValue;
-
-                if (oldValue == null)
-                {
-                    entry.ChangeText();
-                }
+                entry.ChangeText();
             }
         }
 

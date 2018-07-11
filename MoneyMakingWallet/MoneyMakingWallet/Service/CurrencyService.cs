@@ -13,7 +13,6 @@ namespace IDMONEY.IO.Service
             return new ObservableCollection<CurrencyModel>(new[]
             {
                     new CurrencyModel { Name = "IdMoney", Code="iDM", Symbol="iDM",Image="icon.png" },
-                    new CurrencyModel { Name = "BitCoin", Code="BTC", Symbol="BTC",Image="bitcoin.png" },
                     new CurrencyModel { Name = "Ethereum", Code="ETH", Symbol="ETH",Image="ethereum.png" }
                 });
         }
