@@ -17,5 +17,9 @@ namespace IDMONEY.IO.Model
         public const string API_SearchEntryData = Base + "api/EntryData/SearchEntryData";
         public const string API_SaveEntryData = Base + "api/EntryData/SaveEntryData";
         #endregion
+
+        #region Business
+        public const string API_SearchBusiness = Base + "api/Business/Search";
+        #endregion
     }
 }

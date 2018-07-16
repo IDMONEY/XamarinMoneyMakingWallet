@@ -10,14 +10,15 @@ using Xamarin.Forms.Xaml;
 
 namespace IDMONEY.IO.View
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class MainPageDetail : TabbedPage
-    {
-        public MainPageDetail()
-        {
-            InitializeComponent();
+	[XamlCompilation(XamlCompilationOptions.Compile)]
+	public partial class PayPrincipalView : ContentPage
+	{
+		public PayPrincipalView ()
+		{
+			InitializeComponent ();
 
-            BindingContext = new MainPageDetailViewModel();
+            BindingContext = new PayBusinessViewModel();
+
         }
 
         private void Cell_OnTapped(object sender, EventArgs e)

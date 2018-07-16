@@ -111,61 +111,13 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\codeqr.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-hdpi\codeqr.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xhdpi\codeqr.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxhdpi\codeqr.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\bitcoin.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\overview.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-hdpi\bitcoin.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-hdpi\overview.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxhdpi\bitcoin.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxhdpi\overview.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xhdpi\overview.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xhdpi\bitcoin.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\ethereum.png" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\drawable\splash.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-hdpi\ethereum.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable-hdpi\splash.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xhdpi\ethereum.png" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\drawable-xhdpi\splash.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxhdpi\ethereum.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable-xxhdpi\splash.png" />
@@ -180,10 +132,14 @@
     <AndroidResource Include="Resources\drawable-xhdpi\password_icon.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\password_icon.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\id_card_icon.png" />
-    <AndroidResource Include="Resources\drawable\configuration.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\configuration.png" />
-    <AndroidResource Include="Resources\drawable-xhdpi\configuration.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\configuration.png" />
+    <AndroidResource Include="Resources\drawable\data_entry.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\data_entry.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\data_entry.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\data_entry.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\pay.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\pay.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\pay.png" />
+    <AndroidResource Include="Resources\drawable\pay.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>
