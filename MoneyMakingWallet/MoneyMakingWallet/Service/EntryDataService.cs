@@ -28,7 +28,7 @@ namespace IDMONEY.IO.Service
 
                 var content = new StringContent(json, Encoding.UTF8, "application/json");
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                client.DefaultRequestHeaders.Add("Authorization", "Bearer " + UserService.GetUser().Token);
+                client.DefaultRequestHeaders.Add("Authorization", UserService.GetUser().Token);
                 HttpResponseMessage response = await client.PostAsync(uri, content).ConfigureAwait(false);
                 string ans = await response.Content.ReadAsStringAsync();
 
@@ -53,7 +53,7 @@ namespace IDMONEY.IO.Service
 
                 var content = new StringContent(json, Encoding.UTF8, "application/json");
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                client.DefaultRequestHeaders.Add("Authorization", "Bearer " + UserService.GetUser().Token);
+                client.DefaultRequestHeaders.Add("Authorization", UserService.GetUser().Token);
                 HttpResponseMessage response = await client.PostAsync(uri, content).ConfigureAwait(false);
                 string ans = await response.Content.ReadAsStringAsync();
 

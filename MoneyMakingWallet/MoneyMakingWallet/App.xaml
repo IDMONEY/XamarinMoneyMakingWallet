@@ -13,20 +13,9 @@
             <x:String x:Key="AlertTitle">Message</x:String>
             <x:String x:Key="AlertOk">Ok</x:String>
             <x:String x:Key="GeneralError">There was a problem. Please try again later</x:String>
-            <x:String x:Key="Receive">Receive</x:String>
-            <x:String x:Key="Send">Send</x:String>
-            <x:String x:Key="Balance">Balance</x:String>
-            <x:String x:Key="MyAddress">My Address</x:String>
-            <x:String x:Key="PayTo">Pay To</x:String>
-            <x:String x:Key="NameOrAddress">name or address</x:String>
-            <x:String x:Key="Amount">Amount</x:String>
-            <x:String x:Key="UseAllFunds">Use All Funds</x:String>
-            <x:String x:Key="AdvanceSettings">Advance Settings</x:String>
-            <x:String x:Key="GasPrice">Gas Price</x:String>
-            <x:String x:Key="GasLimit">Gas Limit</x:String>
-            <x:String x:Key="Input">Input</x:String>
-            <x:String x:Key="Nonce">Nonce</x:String>
-            <x:String x:Key="Overview">Overview</x:String>
+            <x:String x:Key="Pay">Pay</x:String>
+            <x:String x:Key="DataEntry">Data Entry</x:String>
+            <x:String x:Key="Logout">Logout</x:String>
             <x:String x:Key="Email">Email</x:String>
             <x:String x:Key="Password">Password</x:String>
             <x:String x:Key="ForgotYourPassword">Forgot your password?</x:String>
@@ -44,11 +33,7 @@
             <x:String x:Key="PasswordIsHighStrength">Password is high strength</x:String>
             <x:String x:Key="ConfirmPasswordIsRequired">Confirm password is required</x:String>
             <x:String x:Key="PasswordNotMatch">The password does not match</x:String>
-            <x:String x:Key="Logout">Logout</x:String>
-            <x:String x:Key="Configuration">Configuration</x:String>
-            <x:String x:Key="DataEntry">Data Entry</x:String>
             <x:String x:Key="Save">Save</x:String>
-            
 
             <!--///////////////////////////////////////////////////////////////////////////-->
             <!--                                   COLORS                                  -->
