@@ -28,14 +28,8 @@ namespace MoneyMakingWallet.Droid
             base.OnCreate(bundle);  
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
-            global::ZXing.Net.Mobile.Forms.Android.Platform.Init();
 
             LoadApplication(new App());
-        }
-
-        public override void OnRequestPermissionsResult(int requestCode, string[] permissions, Permission[] grantResults)
-        {
-            global::ZXing.Net.Mobile.Forms.Android.PermissionsHandler.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
     }
 }
