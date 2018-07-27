@@ -29,7 +29,6 @@ namespace IDMONEY.IO.View
         {
             try
             {
-                addPage(new EntryDataView());
             }
             catch (Exception ex)
             {

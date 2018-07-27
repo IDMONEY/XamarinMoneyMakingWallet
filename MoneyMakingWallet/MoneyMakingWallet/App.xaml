@@ -14,7 +14,6 @@
             <x:String x:Key="AlertOk">Ok</x:String>
             <x:String x:Key="GeneralError">There was a problem. Please try again later</x:String>
             <x:String x:Key="Pay">Pay</x:String>
-            <x:String x:Key="DataEntry">Data Entry</x:String>
             <x:String x:Key="Logout">Logout</x:String>
             <x:String x:Key="Email">Email</x:String>
             <x:String x:Key="Password">Password</x:String>

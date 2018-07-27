@@ -1,20 +1,13 @@
-﻿using System;
-
+﻿
+using Acr.UserDialogs;
 using Android.App;
 using Android.Content.PM;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
 using Android.OS;
-using Acr.UserDialogs;
 using IDMONEY.IO;
-using System.IO;
-using Android.Graphics;
-using IDMONEY.IO.View;
 
 namespace MoneyMakingWallet.Droid
 {
-    [Activity(Label = "Money Making Wallet", Icon = "@drawable/icon", Theme = "@style/MainTheme", MainLauncher = false, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+    [Activity(Label = "MIAMI WALLET", Icon = "@drawable/icon", Theme = "@style/MainTheme", MainLauncher = false, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         protected override void OnCreate(Bundle bundle)

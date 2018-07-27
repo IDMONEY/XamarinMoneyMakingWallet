@@ -36,11 +36,6 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="30"/>
             </Grid.RowDefinitions>
-            <Image Grid.Row="0" Grid.Column="0" Source="data_entry.png" Aspect="AspectFill" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
-            <Label Grid.Row="0" Grid.Column="1" VerticalOptions="FillAndExpand" 
-                                    VerticalTextAlignment="Center" 
-                                    Text="{StaticResource DataEntry}" 
-                                    FontSize="16"/>
         </Grid>
         
         <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
