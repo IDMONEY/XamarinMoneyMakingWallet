@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{E7929444-C2E5-449F-A65E-6923ED88940F}</ProjectGuid>
+    <ProjectGuid>{C1E1A1AA-C632-4893-93C8-F4F00C0D321A}</ProjectGuid>
     <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <RootNamespace>MoneyMakingWallet.Droid</RootNamespace>
@@ -52,6 +52,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="Fody">
+      <Version>2.5.0</Version>
+    </PackageReference>
+    <PackageReference Include="Realm">
+      <Version>3.0.0</Version>
+    </PackageReference>
+    <PackageReference Include="Realm.Database">
+      <Version>3.0.0</Version>
+    </PackageReference>
+    <PackageReference Include="Realm.DataBinding">
+      <Version>1.2.0</Version>
+    </PackageReference>
     <PackageReference Include="Xamarin.Forms" Version="2.5.0.280555" />
     <PackageReference Include="Xamarin.Android.Support.Design" Version="25.4.0.2" />
     <PackageReference Include="Xamarin.Android.Support.v7.AppCompat" Version="25.4.0.2" />
@@ -92,64 +104,35 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\codeqr.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-hdpi\codeqr.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xhdpi\codeqr.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxhdpi\codeqr.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\bitcoin.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\overview.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-hdpi\bitcoin.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-hdpi\overview.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxhdpi\bitcoin.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxhdpi\overview.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xhdpi\overview.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xhdpi\bitcoin.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\ethereum.png" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\drawable\splash.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-hdpi\ethereum.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable-hdpi\splash.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xhdpi\ethereum.png" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\drawable-xhdpi\splash.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxhdpi\ethereum.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\splash.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxhdpi\splash.png" />
+    <Content Include="FodyWeavers.xml" />
+    <AndroidResource Include="Resources\drawable\id_card_icon.png" />
+    <AndroidResource Include="Resources\drawable\password_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\id_card_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\password_icon.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\id_card_icon.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\password_icon.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\password_icon.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\id_card_icon.png" />
+    <AndroidResource Include="Resources\drawable\data_entry.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\data_entry.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\data_entry.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\data_entry.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\pay.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\pay.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\pay.png" />
+    <AndroidResource Include="Resources\drawable\pay.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

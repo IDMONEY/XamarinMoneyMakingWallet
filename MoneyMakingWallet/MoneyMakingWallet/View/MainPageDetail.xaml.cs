@@ -11,7 +11,7 @@ using Xamarin.Forms.Xaml;
 namespace IDMONEY.IO.View
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class MainPageDetail : ContentPage
+    public partial class MainPageDetail : TabbedPage
     {
         public MainPageDetail()
         {
@@ -20,6 +20,13 @@ namespace IDMONEY.IO.View
             BindingContext = new MainPageDetailViewModel();
         }
 
-
+        private void Cell_OnTapped(object sender, EventArgs e)
+        {
+            var viewCell = (ViewCell)sender;
+            if (viewCell.View != null)
+            {
+                viewCell.View.BackgroundColor = Color.White;
+            }
+        }
     }
 }

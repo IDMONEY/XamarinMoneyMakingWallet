@@ -3,69 +3,55 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="IDMONEY.IO.View.MainPageMaster"
              Title="Master">
-    <StackLayout>
-        <ListView x:Name="MenuItemsListView"
-              SeparatorVisibility="None"
-              HasUnevenRows="true"
-              ItemsSource="{Binding lstCurrencies}">
-            <ListView.Header>
-                <StackLayout>
-                    <Grid BackgroundColor="#6D6E71">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="10"/>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="10"/>
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="30"/>
-                            <RowDefinition Height="80"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="10"/>
-                        </Grid.RowDefinitions>
-                        <Label
+    <StackLayout VerticalOptions="FillAndExpand">
+        <Grid BackgroundColor="#6D6E71">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="10"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="10"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="80"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="10"/>
+            </Grid.RowDefinitions>
+            <Label
                               Grid.Column="1"
                               Grid.Row="2"
                               Text="Money Making Wallet"
                               TextColor="White"
                               FontSize="20"/>
-                    </Grid>
-                    <Grid x:Name="btnOverview" Padding="15,10" HorizontalOptions="FillAndExpand">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="40"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="30"/>
-                        </Grid.RowDefinitions>
-                        <Image Grid.Row="0" Grid.Column="0" Source="overview.png" Aspect="AspectFill" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
-                        <Label Grid.Row="0" Grid.Column="1" VerticalOptions="FillAndExpand" 
+        </Grid>
+        <Grid x:Name="btnOverview" Padding="15,10" HorizontalOptions="FillAndExpand">
+            <Grid.GestureRecognizers>
+                <TapGestureRecognizer Tapped="btnOverview_Tapped">
+                    
+                </TapGestureRecognizer>
+            </Grid.GestureRecognizers>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="40"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+            </Grid.RowDefinitions>
+            <Image Grid.Row="0" Grid.Column="0" Source="data_entry.png" Aspect="AspectFill" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+            <Label Grid.Row="0" Grid.Column="1" VerticalOptions="FillAndExpand" 
                                     VerticalTextAlignment="Center" 
-                                    Text="{StaticResource Overview}" 
+                                    Text="{StaticResource DataEntry}" 
                                     FontSize="16"/>
-                    </Grid>
-                    <BoxView Margin="10,0" HeightRequest="2" HorizontalOptions="FillAndExpand" Color="{StaticResource General_DefaultColor}"/>
-                </StackLayout>
-            </ListView.Header>
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell>
-                        <Grid Padding="15,10" HorizontalOptions="FillAndExpand">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="40"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="30"/>
-                            </Grid.RowDefinitions>
-                            <Image Grid.Row="0" Grid.Column="0" Source="{Binding Image}" Aspect="AspectFill" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
-                            <Label Grid.Row="0" Grid.Column="1" VerticalOptions="FillAndExpand" 
-                                    VerticalTextAlignment="Center" 
-                                    Text="{Binding Name}" 
-                                    FontSize="16"/>
-                        </Grid>
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+        </Grid>
+        
+        <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+        </Grid>
+
+        <Button Text="{StaticResource Logout}" 
+                        TextColor="White" 
+                        BackgroundColor="#D6B353" 
+                        BorderRadius="25" 
+                        VerticalOptions="End"
+                        Margin="0,0,0,20"
+                        Clicked="Logout_Clicked"/>
     </StackLayout>
 </ContentPage>

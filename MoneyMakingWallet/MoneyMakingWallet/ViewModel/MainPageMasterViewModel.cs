@@ -12,11 +12,11 @@ namespace IDMONEY.IO.ViewModel
 {
     public class MainPageMasterViewModel : ViewModelBase
     {
-        public ObservableCollection<CurrencyModel> lstCurrencies { get; set; }
+       
 
         public MainPageMasterViewModel()
         {
-            lstCurrencies = CurrencyService.SearchCrytoCurrenciesByUser();
+
         }
     }
 }
