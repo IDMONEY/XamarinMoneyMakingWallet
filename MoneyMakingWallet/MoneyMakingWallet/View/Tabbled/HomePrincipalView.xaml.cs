@@ -1,4 +1,5 @@
-﻿using System;
+﻿using IDMONEY.IO.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,9 @@ namespace IDMONEY.IO.View
 		public HomePrincipalView ()
 		{
 			InitializeComponent ();
-		}
+
+            BindingContext = HomeViewModel.GetInstance();
+
+        }
 	}
 }

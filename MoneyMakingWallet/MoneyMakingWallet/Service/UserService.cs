@@ -143,4 +143,33 @@ namespace IDMONEY.IO.Service
             return req;
         }
     }
+
+    public class GetUserService : BaseRequest
+    {
+        public UserModel User { get; set; }
+
+        public static async Task<GetUserService> GetUser()
+        {
+            GetUserService req = new GetUserService();
+
+            using (HttpClient client = new HttpClient())
+            {
+                var uri = new Uri(APIDictionary.API_GetUser);
+
+                var json = JsonConvert.SerializeObject(new
+                {
+                });
+
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                client.DefaultRequestHeaders.Add("Authorization", UserService.GetUser().Token);
+                HttpResponseMessage response = await client.PostAsync(uri, content).ConfigureAwait(false);
+                string ans = await response.Content.ReadAsStringAsync();
+
+                req = JsonConvert.DeserializeObject<GetUserService>(ans);
+            }
+
+            return req;
+        }
+    }
 }

@@ -13,6 +13,7 @@ namespace IDMONEY.IO.Model
         #region Users
         public const string API_CreateUser = Base + "api/User/Create";
         public const string API_LoginUser = Base + "api/User/Login";
+        public const string API_GetUser = Base + "api/User/Get";
         #endregion
 
         #region Business

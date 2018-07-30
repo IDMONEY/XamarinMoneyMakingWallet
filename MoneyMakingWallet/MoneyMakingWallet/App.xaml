@@ -35,6 +35,7 @@
             <x:String x:Key="Save">Save</x:String>
             <x:String x:Key="Home">Home</x:String>
             <x:String x:Key="Amount">Amount</x:String>
+            <x:String x:Key="AvailableBalance">Available Balance</x:String>
 
             <!--///////////////////////////////////////////////////////////////////////////-->
             <!--                                   COLORS                                  -->

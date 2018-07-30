@@ -2,6 +2,7 @@
 using Realms;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -10,8 +11,17 @@ using System.Threading.Tasks;
 
 namespace IDMONEY.IO.Model
 {
-    public class UserModel : RealmObject
+    public class UserModel : RealmObject, INotifyPropertyChanged
     {
+        #region INotifyPropertyChanged Implementation
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged(string propertyName)
+        {
+            if (PropertyChanged != null) // if there is any subscribers 
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+        }
+        #endregion
+
         [PrimaryKey]
         public long Id { get; set; }
 
@@ -26,7 +36,18 @@ namespace IDMONEY.IO.Model
         public string Privatekey { get; set; }
 
         [Ignored]
-        public decimal AvailableBalance { get; set; }
+        private decimal _availableBalance { get; set; }
+
+        [Ignored]
+        public decimal AvailableBalance
+        {
+            get { return _availableBalance; }
+            set
+            {
+                _availableBalance = value;
+                OnPropertyChanged("AvailableBalance");
+            }
+        }
 
         [Ignored]
         public decimal BlockedBalance { get; set; }

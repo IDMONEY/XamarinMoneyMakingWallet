@@ -3,10 +3,17 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="IDMONEY.IO.View.HomePrincipalView">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+            <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="White">
+                <Label HorizontalOptions="Center" Text="{StaticResource AvailableBalance}" FontSize="16"/>
+                <Label HorizontalOptions="Center" Text="{Binding User.AvailableBalance}" FontSize="16"/>
+            </StackLayout>
+            <!--Loader-->
+            <ContentView IsVisible="{Binding IsBusy}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <ActivityIndicator IsVisible="True" IsRunning="{Binding IsBusy}" Color="{StaticResource General_DefaultColor}" 
+                           WidthRequest="80" HeightRequest="80" VerticalOptions="Center" HorizontalOptions="Center"/>
+            </ContentView>
+
+        </Grid>
     </ContentPage.Content>
 </ContentPage>
