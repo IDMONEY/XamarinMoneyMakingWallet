@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
+using Xamarin.Forms;
 
 namespace IDMONEY.IO.ViewModel
 {
@@ -26,6 +27,34 @@ namespace IDMONEY.IO.ViewModel
                 _isBusy = value;
                 OnPropertyChanged("IsBusy");
             }
+        }
+        #endregion
+
+        #region Public Methods
+        public void AddPage(Page page, bool clearStack = false)
+        {
+            INavigation navigation = ((MasterDetailPage)App.Current.MainPage).Detail.Navigation;
+
+            if (navigation.NavigationStack.Count > 1 && clearStack)
+            {
+                int pops = 0;
+                int count = navigation.NavigationStack.Count - 1;
+
+                while (count > pops)
+                {
+                    navigation.RemovePage(
+                        navigation.NavigationStack[navigation.NavigationStack.Count - 1]);
+                    count--;
+                }
+            }
+
+            navigation.PushAsync(page);
+        }
+
+        internal void PopToRoot()
+        {
+            INavigation navigation = ((MasterDetailPage)App.Current.MainPage).Detail.Navigation;
+            navigation.PopToRootAsync();
         }
         #endregion
     }

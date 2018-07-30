@@ -17,7 +17,7 @@ namespace IDMONEY.IO.View
 		{
 			InitializeComponent ();
 
-            BindingContext = new PayBusinessViewModel();
+            BindingContext = PayBusinessViewModel.GetInstance(true);
 
         }
 

@@ -15,7 +15,7 @@ namespace IDMONEY.IO.Service
     {
         public static UserModel GetUser()
         {
-            var realm = Realm.GetInstance();
+            var realm = Realm.GetInstance(AppManagement.RealmConfigurationUser);
 
             var lstUserModel = realm.All<UserModel>();
 
@@ -31,7 +31,7 @@ namespace IDMONEY.IO.Service
 
         public static void SaveUser(UserModel user, string token)
         {
-            var realm = Realm.GetInstance();
+            var realm = Realm.GetInstance(AppManagement.RealmConfigurationUser);
 
             var lstUserModel = realm.All<UserModel>().ToList();
 
@@ -43,11 +43,8 @@ namespace IDMONEY.IO.Service
                     realm.Add(new UserModel
                     {
                         Token = token,
-                        Address = user.Address,
                         Email = user.Email,
-                        Id = user.Id,
-                        Password = user.Password,
-                        Privatekey = user.Privatekey
+                        Id = user.Id
                     });
                 });
             }
@@ -60,11 +57,8 @@ namespace IDMONEY.IO.Service
                     var userModel = new UserModel
                     {
                         Token = token,
-                        Address = user.Address,
                         Email = user.Email,
                         Id = user.Id,
-                        Password = user.Password,
-                        Privatekey = user.Privatekey
                     };
 
                     realm.Add(userModel);
@@ -76,7 +70,7 @@ namespace IDMONEY.IO.Service
 
         public static void DeleteUser()
         {
-            var realm = Realm.GetInstance();
+            var realm = Realm.GetInstance(AppManagement.RealmConfigurationUser);
 
             using (var transaction = realm.BeginWrite())
             {

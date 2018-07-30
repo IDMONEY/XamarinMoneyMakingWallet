@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="IDMONEY.IO.View.SendTransferView"
+              xmlns:local="clr-namespace:IDMONEY.IO.View;assembly=IDMONEY.IO">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:Base64Converter x:Key="cnvBase64Converter"></local:Base64Converter>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="White">
+            <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="White">
+                    <Image WidthRequest="60" HeightRequest="60" Source="{Binding Business.Image, Converter={StaticResource cnvBase64Converter}}" 
+                                               Aspect="AspectFill" HorizontalOptions="CenterAndExpand" VerticalOptions="Start" Margin="0,10"/>
+                    <Label HorizontalOptions="CenterAndExpand" XAlign="Center" HorizontalTextAlignment="Center" Text="{Binding Business.Name}" FontSize="16"/>
+
+                    <local:NumberEntry Placeholder="{StaticResource Amount}" Amount="{Binding Transaction.Amount}" Margin="20,10" FontSize="18" HorizontalTextAlignment="Center">
+                        <local:NumberEntry.Behaviors>
+                            <local:EventToCommandBehavior EventName="TextChanged" Command="{Binding ValidateTransferCommand}" />
+                        </local:NumberEntry.Behaviors>
+                    </local:NumberEntry>
+
+                    <Editor Margin="20,0" Text="{Binding Transaction.Description}" VerticalOptions="CenterAndExpand" FontSize="14" HeightRequest="80"/>
+
+                    <Button Text="{StaticResource Pay}" 
+                        TextColor="White" 
+                        BorderRadius="25" 
+                        VerticalOptions="End"
+                        Margin="0,0,0,20"
+                        IsEnabled="{Binding IsTransferValid}"
+                        Command="{Binding SendTransferCommand}"/>
+                </StackLayout>
+            </ScrollView>
+            <!--Loader-->
+            <ContentView IsVisible="{Binding IsBusy}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <ActivityIndicator IsVisible="True" IsRunning="{Binding IsBusy}" Color="{StaticResource General_DefaultColor}" 
+                           WidthRequest="80" HeightRequest="80" VerticalOptions="Center" HorizontalOptions="Center"/>
+            </ContentView>
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

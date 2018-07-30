@@ -82,12 +82,6 @@
     <None Include="Assets\AboutAssets.txt" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\icon.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\icon.png" />
-    <AndroidResource Include="Resources\drawable-xhdpi\icon.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\icon.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Properties\AndroidManifest.xml" />
   </ItemGroup>
   <ItemGroup>
@@ -104,18 +98,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\splash.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-hdpi\splash.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xhdpi\splash.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxhdpi\splash.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="FodyWeavers.xml" />
     <AndroidResource Include="Resources\drawable\id_card_icon.png" />
     <AndroidResource Include="Resources\drawable\password_icon.png" />
@@ -125,14 +107,22 @@
     <AndroidResource Include="Resources\drawable-xhdpi\password_icon.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\password_icon.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\id_card_icon.png" />
-    <AndroidResource Include="Resources\drawable\data_entry.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\data_entry.png" />
-    <AndroidResource Include="Resources\drawable-xhdpi\data_entry.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\data_entry.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\pay.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\pay.png" />
     <AndroidResource Include="Resources\drawable-hdpi\pay.png" />
     <AndroidResource Include="Resources\drawable\pay.png" />
+    <AndroidResource Include="Resources\drawable\splash.jpg" />
+    <AndroidResource Include="Resources\drawable-hdpi\splash.jpg" />
+    <AndroidResource Include="Resources\drawable-xhdpi\splash.jpg" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\splash.jpg" />
+    <AndroidResource Include="Resources\drawable\home.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\home.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\home.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\home.png" />
+    <AndroidResource Include="Resources\drawable\icon.jpg" />
+    <AndroidResource Include="Resources\drawable-hdpi\icon.jpg" />
+    <AndroidResource Include="Resources\drawable-xhdpi\icon.jpg" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\icon.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

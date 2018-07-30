@@ -4,6 +4,7 @@
              x:Class="IDMONEY.IO.View.MainPageDetail"
             xmlns:pages="clr-namespace:IDMONEY.IO.View">
     <TabbedPage.Children>
+        <pages:HomePrincipalView Title="{StaticResource Home}" Icon="home.png"/>
         <pages:PayPrincipalView Title="{StaticResource Pay}" Icon="pay.png"/>
     </TabbedPage.Children>
 </TabbedPage>

@@ -19,7 +19,7 @@
             <Label
                               Grid.Column="1"
                               Grid.Row="2"
-                              Text="Money Making Wallet"
+                              Text="MIAMI WALLET"
                               TextColor="White"
                               FontSize="20"/>
         </Grid>

@@ -14,7 +14,7 @@ namespace IDMONEY.IO.Helper
             MessengerHelper.Alert(App.Current.Resources["GeneralError"].ToString());
             if (applyPopToRoot)
             {
-                if (App.Current.MainPage.GetType() == typeof(MasterDetailPage))
+                if (App.Current.MainPage.GetType() == typeof(MainPage))
                 {
                     ((MasterDetailPage)App.Current.MainPage).Detail.Navigation.PopToRootAsync();
                 }

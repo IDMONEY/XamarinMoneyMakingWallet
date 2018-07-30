@@ -17,12 +17,18 @@ namespace IDMONEY.IO.Model
 
         public string Email { get; set; }
 
+        public string Token { get; set; }
+
+        [Ignored]
         public string Address { get; set; }
 
-        public string Password { get; set; }
-
+        [Ignored]
         public string Privatekey { get; set; }
 
-        public string Token { get; set; }
+        [Ignored]
+        public decimal AvailableBalance { get; set; }
+
+        [Ignored]
+        public decimal BlockedBalance { get; set; }
     }
 }

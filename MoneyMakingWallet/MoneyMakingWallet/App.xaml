@@ -33,6 +33,8 @@
             <x:String x:Key="ConfirmPasswordIsRequired">Confirm password is required</x:String>
             <x:String x:Key="PasswordNotMatch">The password does not match</x:String>
             <x:String x:Key="Save">Save</x:String>
+            <x:String x:Key="Home">Home</x:String>
+            <x:String x:Key="Amount">Amount</x:String>
 
             <!--///////////////////////////////////////////////////////////////////////////-->
             <!--                                   COLORS                                  -->
