@@ -3,6 +3,7 @@ using IDMONEY.IO.Model;
 using IDMONEY.IO.Service;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 
 namespace IDMONEY.IO.ViewModel
@@ -23,7 +24,7 @@ namespace IDMONEY.IO.ViewModel
 
         private HomeViewModel()
         {
-            initClassAsync();
+            initClass();
             initCommands();
         }
         #endregion
@@ -47,10 +48,26 @@ namespace IDMONEY.IO.ViewModel
                 OnPropertyChanged("User");
             }
         }
+
+        private ObservableCollection<TransactionModel> _lstTransfers;
+
+        public ObservableCollection<TransactionModel> lstTransfers
+        {
+            get
+            {
+                return _lstTransfers;
+            }
+            set
+            {
+                _lstTransfers = value;
+                OnPropertyChanged("lstTransfers");
+            }
+        }
+
         #endregion
 
-        #region private methods
-        private async void initClassAsync()
+        #region Public Methods
+        public async void FillData()
         {
             try
             {
@@ -66,6 +83,15 @@ namespace IDMONEY.IO.ViewModel
                 }
                 User = req.User;
 
+                TransactionService transactionService = await TransactionService.SearchTransaction();
+                if (!transactionService.IsSuccessful)
+                {
+                    IsBusy = false;
+                    ErrorHelper.ControlError(req.Errors, false);
+                    return;
+                }
+                lstTransfers = transactionService.Transactions;
+
                 IsBusy = false;
             }
             catch (Exception ex)
@@ -73,6 +99,13 @@ namespace IDMONEY.IO.ViewModel
                 IsBusy = false;
                 ErrorHelper.ControlError(ex, false);
             }
+        }
+        #endregion
+
+        #region private methods
+        private void initClass()
+        {
+            FillData();
         }
 
         private void initCommands()

@@ -1,12 +1,52 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="IDMONEY.IO.View.HomePrincipalView">
+             x:Class="IDMONEY.IO.View.HomePrincipalView"
+             xmlns:local="clr-namespace:IDMONEY.IO.View;assembly=IDMONEY.IO">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:NumberConverter x:Key="cnvNumberConverter"></local:NumberConverter>
+            <local:Base64Converter x:Key="cnvBase64Converter"></local:Base64Converter>
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.Content>
         <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
             <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="White">
-                <Label HorizontalOptions="Center" Text="{StaticResource AvailableBalance}" FontSize="16"/>
-                <Label HorizontalOptions="Center" Text="{Binding User.AvailableBalance}" FontSize="16"/>
+                <Label HorizontalOptions="Center" Text="{StaticResource AvailableBalance}" FontSize="18" Margin="0,10,0,0"/>
+                <Label HorizontalOptions="Center" Text="{Binding User.AvailableBalance, Converter={StaticResource cnvNumberConverter}, ConverterParameter='Amount'}" FontSize="20"/>
+
+                <Label HorizontalOptions="Center" Text="{StaticResource LastTransfers}" FontSize="16" Margin="0,15,0,0"/>
+                <ListView 
+                      SeparatorVisibility="None"
+                      RowHeight="50"
+                      ItemsSource="{Binding lstTransfers}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell Tapped="Cell_OnTapped" IsEnabled="False">
+                                <Grid Padding="5,10" HorizontalOptions="FillAndExpand" RowSpacing="0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="40"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="30"/>
+                                        <RowDefinition Height="20"/>
+                                    </Grid.RowDefinitions>
+                                    <Image Grid.Row="0" Grid.Column="0" Grid.RowSpan="1" Source="{Binding Image, Converter={StaticResource cnvBase64Converter}}" 
+                                               Aspect="AspectFill" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                                    <AbsoluteLayout Grid.Row="0" Grid.Column="1" HorizontalOptions="FillAndExpand">
+                                        <StackLayout  Orientation="Horizontal" HorizontalOptions="Start" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
+                                            <Label HorizontalOptions="Start" Text="{Binding BusinessName}" FontSize="12"/>
+                                        </StackLayout>
+                                        <Label AbsoluteLayout.LayoutBounds="1,1,1,1" AbsoluteLayout.LayoutFlags="All" Text="{Binding Amount, Converter={StaticResource cnvNumberConverter}, ConverterParameter='Amount'}"
+                                              FontSize="12" FontAttributes="Bold" HorizontalOptions="EndAndExpand"
+                                               VerticalOptions="Start" BackgroundColor="White"/>
+                                    </AbsoluteLayout>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
             </StackLayout>
             <!--Loader-->
             <ContentView IsVisible="{Binding IsBusy}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">

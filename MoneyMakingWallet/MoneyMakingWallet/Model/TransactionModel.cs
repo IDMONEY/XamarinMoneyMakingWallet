@@ -26,6 +26,8 @@ namespace IDMONEY.IO.Model
 
         public string BusinessName { get; set; }
 
+        public string Image { get; set; }
+
         public int? UserId { get; set; }
 
         public decimal? Amount { get; set; }
