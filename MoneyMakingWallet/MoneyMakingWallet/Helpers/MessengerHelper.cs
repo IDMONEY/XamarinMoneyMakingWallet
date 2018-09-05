@@ -1,12 +1,11 @@
-﻿using Acr.UserDialogs;
-using IDMONEY.IO.Model;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿#region Libraries
+using Acr.UserDialogs;
+using IDMONEY.IO.Model; 
+#endregion
 
-namespace IDMONEY.IO.Helper
+namespace IDMONEY.IO.Helpers
 {
-    public class MessengerHelper
+    public static class MessengerHelper
     {
         public static void Alert(string msg)
         {
