@@ -34,5 +34,14 @@ namespace IDMONEY.IO
             }
         }
 
+        [DebuggerStepThrough]
+        public static void IsNotNull(object parameter)
+        {
+            if (parameter.IsNull())
+            {
+                throw new ArgumentNullException(nameof(parameter));
+            }
+        }
+
     }
 }

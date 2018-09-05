@@ -14,10 +14,10 @@ namespace IDMONEY.IO.Model
     public class UserModel : RealmObject, INotifyPropertyChanged
     {
         #region INotifyPropertyChanged Implementation
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected void OnPropertyChanged(string propertyName)
+        new public event PropertyChangedEventHandler PropertyChanged;
+        protected override void OnPropertyChanged(string propertyName)
         {
-            if (PropertyChanged != null) // if there is any subscribers 
+            if (PropertyChanged.IsNotNull()) // if there is any subscribers 
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
         #endregion
@@ -45,7 +45,7 @@ namespace IDMONEY.IO.Model
             set
             {
                 _availableBalance = value;
-                OnPropertyChanged("AvailableBalance");
+                OnPropertyChanged(nameof(AvailableBalance));
             }
         }
 
