@@ -5,7 +5,8 @@ using System.Text;
 
 namespace IDMONEY.IO.Model
 {
-    public class APIDictionary
+    //TODO: Store this information on configuration file
+    public static class APIDictionary
     {
         ///private const string Base = "http://jeancarlos.eastus2.cloudapp.azure.com/WebApiMoneyMakingWallet2/";
         private const string Base = "http://54.70.160.109/webapimoneymakingwallet/";

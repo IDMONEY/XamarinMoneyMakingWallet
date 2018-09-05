@@ -1,13 +1,15 @@
-﻿using IDMONEY.IO.Model;
+﻿#region Libraries
+using IDMONEY.IO.Model;
 using IDMONEY.IO.View;
 using System;
 using System.Collections.Generic;
 using System.Text;
-using Xamarin.Forms;
+using Xamarin.Forms; 
+#endregion
 
-namespace IDMONEY.IO.Helper
+namespace IDMONEY.IO.Helpers
 {
-    public class ErrorHelper
+    public static class ErrorHelper
     {
         public static void ControlError(Exception ex, bool applyPopToRoot = true)
         {
@@ -27,7 +29,7 @@ namespace IDMONEY.IO.Helper
 
         public static void ControlError(List<Error> errors, bool isAlert = false)
         {
-            if (errors != null && errors.Count > 0)
+            if (errors?.Count > 0)
             {
                 switch (errors[0].Code)
                 {

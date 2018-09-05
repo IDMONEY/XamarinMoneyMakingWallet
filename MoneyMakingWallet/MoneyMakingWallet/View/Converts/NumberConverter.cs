@@ -1,14 +1,18 @@
-﻿using IDMONEY.IO.Helper;
+﻿#region Libraries
+using IDMONEY.IO.Helpers;
 using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Text;
-using Xamarin.Forms;
+using Xamarin.Forms; 
+#endregion
 
 namespace IDMONEY.IO.View
 {
     public class NumberConverter : IValueConverter
     {
+        #region Constants
+        private const int DEFAULT_VALUE = 0;
+        #endregion
+
         private object obj;
 
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
@@ -16,47 +20,25 @@ namespace IDMONEY.IO.View
             obj = value;
             EnumNumberType numberFormat = (EnumNumberType)Enum.Parse(typeof(EnumNumberType), (string)parameter);
 
-            string numberFommatter = string.Empty;
-            if (numberFormat == EnumNumberType.Amount)
+            if (numberFormat == EnumNumberType.Percent)
             {
-                if (value == null)
-                {
-                    numberFommatter = FormatterHelper.Format(0);
-                }
-                else
-                {
-                    numberFommatter = FormatterHelper.Format((decimal)value);
-                }
-            }
-            else if(numberFormat == EnumNumberType.Percent)
-            {
-                if (value == null)
-                {
-                    numberFommatter = FormatterHelper.FormatPorcent(0);
-                }
-                else
-                {
-                    numberFommatter = FormatterHelper.FormatPorcent((decimal)value);
-                }
+                return value.IsNull() ? FormatPercentage(DEFAULT_VALUE) : FormatPercentage(value);
+
             }
             else
             {
-                if (value == null)
-                {
-                    numberFommatter = FormatterHelper.Format(0);
-                }
-                else
-                {
-                    numberFommatter = FormatterHelper.Format((decimal)value);
-                }
+                return value.IsNull() ? FormatAmount(DEFAULT_VALUE) : FormatAmount(value);
             }
-
-            return numberFommatter;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
             return obj;
         }
+
+        #region Private Methods
+        private string FormatAmount(object value) => FormatterHelper.Format(System.Convert.ToDecimal(value));
+        private string FormatPercentage(object value) => FormatterHelper.FormatPercentage(System.Convert.ToDecimal(value)); 
+        #endregion
     }
 }

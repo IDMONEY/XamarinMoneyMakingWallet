@@ -1,19 +1,21 @@
-﻿using System;
+﻿#region Libraries
+using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Text; 
+#endregion
 
-namespace IDMONEY.IO.Helper
+namespace IDMONEY.IO.Helpers
 {
-    class FormatterHelper
+    public static class FormatterHelper
     {
         public static string Format(decimal value)
         {
             return value.ToString("N2");
         }
 
-        public static string FormatPorcent(decimal value)
+        public static string FormatPercentage(decimal value)
         {
-            value = value / 100;
+            value /= 100;
             return value.ToString("0.00%");
         }
     }

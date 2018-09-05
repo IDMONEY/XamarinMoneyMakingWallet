@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace IDMONEY.IO.Service
 {
-    public class UserService
+    public static class UserService
     {
         public static UserModel GetUser()
         {
@@ -35,7 +35,7 @@ namespace IDMONEY.IO.Service
 
             var lstUserModel = realm.All<UserModel>().ToList();
 
-            if (lstUserModel.Count() == 0)
+            if (lstUserModel.Count == 0)
             {
                 //Insert
                 realm.Write(() =>
