@@ -1,11 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Text.RegularExpressions;
+﻿#region Libraries
+using System;
+using System.Text.RegularExpressions; 
+#endregion
 
-namespace IDMONEY.IO.Helper
+namespace IDMONEY.IO.Helpers
 {
-    public class ValidationHelper
+    public static class ValidationHelper
     {
         public static bool IsValidEmail(string email)
         {

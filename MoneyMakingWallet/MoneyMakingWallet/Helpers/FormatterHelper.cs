@@ -1,10 +1,12 @@
-﻿using System;
+﻿#region Libraries
+using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Text; 
+#endregion
 
-namespace IDMONEY.IO.Helper
+namespace IDMONEY.IO.Helpers
 {
-    class FormatterHelper
+    public static class FormatterHelper
     {
         public static string Format(decimal value)
         {
