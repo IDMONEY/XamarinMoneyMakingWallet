@@ -13,9 +13,9 @@ namespace IDMONEY.IO.Helpers
             return value.ToString("N2");
         }
 
-        public static string FormatPorcent(decimal value)
+        public static string FormatPercentage(decimal value)
         {
-            value = value / 100;
+            value /= 100;
             return value.ToString("0.00%");
         }
     }
