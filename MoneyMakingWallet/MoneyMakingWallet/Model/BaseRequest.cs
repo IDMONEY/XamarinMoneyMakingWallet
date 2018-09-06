@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿#region Libraries
+using System.Collections.Generic; 
+#endregion
 
 namespace IDMONEY.IO.Model
 {
-    public class BaseRequest
+    public abstract class BaseRequest
     {
         public bool IsSuccessful { get; set; }
 
