@@ -1,13 +1,5 @@
-﻿using Newtonsoft.Json;
-using Realms;
-using System;
-using System.Collections.Generic;
+﻿using Realms;
 using System.ComponentModel;
-using System.Linq;
-using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace IDMONEY.IO.Model
 {

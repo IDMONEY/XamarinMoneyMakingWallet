@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace IDMONEY.IO.Service
 {
-    public class TransactionService : BaseRequest
+    public class TransactionService : BaseService
     {
         public TransactionModel Transaction { get; set; }
 
@@ -17,51 +17,21 @@ namespace IDMONEY.IO.Service
 
         public static async Task<TransactionService> InsertTrasactionAsync(TransactionModel transaction)
         {
-            TransactionService req = new TransactionService();
+            var uri = new Uri(APIDictionary.API_InsertTrasaction);
 
-            using (HttpClient client = new HttpClient())
+            var json = JsonConvert.SerializeObject(new
             {
-                var uri = new Uri(APIDictionary.API_InsertTrasaction);
+                Transaction = transaction
+            });
 
-                var json = JsonConvert.SerializeObject(new
-                {
-                    Transaction = transaction
-                });
-
-                var content = new StringContent(json, Encoding.UTF8, "application/json");
-                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                client.DefaultRequestHeaders.Add("Authorization", UserService.GetUser().Token);
-                HttpResponseMessage response = await client.PostAsync(uri, content).ConfigureAwait(false);
-                string ans = await response.Content.ReadAsStringAsync();
-
-                req = JsonConvert.DeserializeObject<TransactionService>(ans);
-            }
-
-            return req;
+            return await PostAsync<TransactionService>(json, uri, UserService.GetUser().Token);
         }
 
         public static async Task<TransactionService> SearchTransaction()
         {
-            TransactionService req = new TransactionService();
+            var uri = new Uri(APIDictionary.API_TransactionsList);
 
-            using (HttpClient client = new HttpClient())
-            {
-                var uri = new Uri(APIDictionary.API_SearchByUser);
-
-                var json = JsonConvert.SerializeObject(new
-                {
-                });
-
-                var content = new StringContent(json, Encoding.UTF8, "application/json");
-                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                client.DefaultRequestHeaders.Add("Authorization", UserService.GetUser().Token);
-                HttpResponseMessage response = await client.PostAsync(uri, content).ConfigureAwait(false);
-                string ans = await response.Content.ReadAsStringAsync();
-
-                req = JsonConvert.DeserializeObject<TransactionService>(ans);
-            }
-
-            return req;
+            return await GetAsync<TransactionService>(uri, UserService.GetUser().Token);
         }
     }
 }

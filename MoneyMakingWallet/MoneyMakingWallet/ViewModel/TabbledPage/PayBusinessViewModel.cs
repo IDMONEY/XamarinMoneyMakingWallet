@@ -26,7 +26,7 @@ namespace IDMONEY.IO.ViewModel
             set
             {
                 _lstBusiness = value;
-                OnPropertyChanged("lstBusiness");
+                OnPropertyChanged(nameof(lstBusiness));
             }
         }
 
@@ -41,7 +41,7 @@ namespace IDMONEY.IO.ViewModel
             set
             {
                 _business = value;
-                OnPropertyChanged("Business");
+                OnPropertyChanged(nameof(Business));
             }
         }
         private TransactionModel _Transaction;
@@ -55,7 +55,7 @@ namespace IDMONEY.IO.ViewModel
             set
             {
                 _Transaction = value;
-                OnPropertyChanged("Transaction");
+                OnPropertyChanged(nameof(Transaction));
             }
         }
 
@@ -70,7 +70,7 @@ namespace IDMONEY.IO.ViewModel
             set
             {
                 _IsTransferValid = value;
-                OnPropertyChanged("IsTransferValid");
+                OnPropertyChanged(nameof(IsTransferValid));
             }
         }
         
@@ -89,7 +89,7 @@ namespace IDMONEY.IO.ViewModel
 
         public static PayBusinessViewModel GetInstance(bool refresh = false)
         {
-            if (refresh || businessViewModel == null)
+            if (refresh || businessViewModel.IsNull())
             {
                 businessViewModel = new PayBusinessViewModel();
             }
@@ -110,7 +110,7 @@ namespace IDMONEY.IO.ViewModel
             {
                 IsBusy = true;
 
-                BusinessService req = await BusinessService.SearchBusinessAsync();
+                BusinessService req = await BusinessService.BusinessListAsync();
 
                 if (!req.IsSuccessful)
                 {

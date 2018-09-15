@@ -15,7 +15,7 @@ namespace IDMONEY.IO.ViewModel
 
         public static HomeViewModel GetInstance(bool refresh = false)
         {
-            if (refresh || homeViewModel == null)
+            if (refresh || homeViewModel.IsNull())
             {
                 homeViewModel = new HomeViewModel();
             }
@@ -45,7 +45,7 @@ namespace IDMONEY.IO.ViewModel
             set
             {
                 _user = value;
-                OnPropertyChanged("User");
+                OnPropertyChanged(nameof(User));
             }
         }
 
@@ -60,7 +60,7 @@ namespace IDMONEY.IO.ViewModel
             set
             {
                 _lstTransfers = value;
-                OnPropertyChanged("lstTransfers");
+                OnPropertyChanged(nameof(lstTransfers));
             }
         }
 

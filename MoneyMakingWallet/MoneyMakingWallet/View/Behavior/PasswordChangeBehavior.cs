@@ -80,7 +80,7 @@ namespace IDMONEY.IO.View
         private static void PasswordPropertyChanged(BindableObject bindable, object oldValue, object newValue)
         {
             PasswordChangeBehavior component = (PasswordChangeBehavior)bindable;
-            if (newValue != null)
+            if (newValue.IsNotNull())
             {
                 component.password = (string)newValue;
             }
@@ -209,7 +209,7 @@ namespace IDMONEY.IO.View
         private static void PasswordPropertyChanged(BindableObject bindable, object oldValue, object newValue)
         {
             ConfirmPasswordChangeBehavior component = (ConfirmPasswordChangeBehavior)bindable;
-            if (newValue != null)
+            if (newValue.IsNotNull())
             {
                 component.password = (string)newValue;
                 component.Validator(component.password, component.confirmPassword);

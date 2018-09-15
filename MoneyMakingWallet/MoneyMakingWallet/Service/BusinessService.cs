@@ -10,33 +10,28 @@ using System.Threading.Tasks;
 
 namespace IDMONEY.IO.Service
 {
-    public class BusinessService : BaseRequest
+    public class BusinessService : BaseService
     {
         public ObservableCollection<BusinessModel> Businesses { get; set; }
 
-        public static async Task<BusinessService> SearchBusinessAsync(string name = null)
+        public static async Task<BusinessService> SearchBusinessAsync(string name)
         {
-            BusinessService req = new BusinessService();
+            var uri = new Uri(APIDictionary.API_BusinessList);
 
-            using (HttpClient client = new HttpClient())
-            {
-                var uri = new Uri(APIDictionary.API_SearchBusiness);
+            Dictionary<string, string> parameters = null;
 
-                var json = JsonConvert.SerializeObject(new
+            parameters = new Dictionary<string, string>()
                 {
-                    Name = name
-                });
+                    { "Name", name }
+                };
 
-                var content = new StringContent(json, Encoding.UTF8, "application/json");
-                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                client.DefaultRequestHeaders.Add("Authorization", UserService.GetUser().Token);
-                HttpResponseMessage response = await client.PostAsync(uri, content).ConfigureAwait(false);
-                string ans = await response.Content.ReadAsStringAsync();
+            return await GetAsync<BusinessService>(uri, UserService.GetUser().Token, parameters);
+        }
 
-                req = JsonConvert.DeserializeObject<BusinessService>(ans);
-            }
-
-            return req;
+        public static async Task<BusinessService> BusinessListAsync()
+        {
+            var uri = new Uri(APIDictionary.API_BusinessList);
+            return await GetAsync<BusinessService>(uri, UserService.GetUser().Token);
         }
     }
 }

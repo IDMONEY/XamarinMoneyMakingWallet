@@ -21,7 +21,7 @@ namespace IDMONEY.IO.ViewModel
             set
             {
                 _email = value;
-                OnPropertyChanged("Email");
+                OnPropertyChanged(nameof(Email));
             }
         }
 
@@ -32,7 +32,7 @@ namespace IDMONEY.IO.ViewModel
             set
             {
                 _password = value;
-                OnPropertyChanged("Password");
+                OnPropertyChanged(nameof(Password));
             }
         }
 
@@ -43,7 +43,7 @@ namespace IDMONEY.IO.ViewModel
             set
             {
                 _isValidUser = value;
-                OnPropertyChanged("IsValidUser");
+                OnPropertyChanged(nameof(IsValidUser));
             }
         }
         #endregion

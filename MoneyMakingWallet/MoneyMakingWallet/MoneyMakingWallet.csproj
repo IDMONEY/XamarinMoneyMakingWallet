@@ -17,6 +17,7 @@
   <ItemGroup>
     <PackageReference Include="Acr.UserDialogs" Version="7.0.1" />
     <PackageReference Include="Fody" Version="2.5.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
     <PackageReference Include="Realm" Version="3.0.0" />
     <PackageReference Include="Realm.Database" Version="3.0.0" />
     <PackageReference Include="Realm.DataBinding" Version="1.2.0" />

@@ -80,7 +80,7 @@ namespace IDMONEY.IO.Service
         }
     }
 
-    public class CreateUserService : BaseRequest
+    public class CreateUserService : BaseService
     {
         public UserModel User { get; set; }
 
@@ -88,31 +88,19 @@ namespace IDMONEY.IO.Service
 
         public static async Task<CreateUserService> CreateUser(string email, string password)
         {
-            CreateUserService req = new CreateUserService();
+            var uri = new Uri(APIDictionary.API_InsertUser);
 
-            using (HttpClient client = new HttpClient())
+            var json = JsonConvert.SerializeObject(new
             {
-                var uri = new Uri(APIDictionary.API_CreateUser);
+                Email = email,
+                Password = password.GenerateSHA512()
+            });
 
-                var json = JsonConvert.SerializeObject(new
-                {
-                    Email = email,
-                    Password = password
-                });
-
-                var content = new StringContent(json, Encoding.UTF8, "application/json");
-                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                HttpResponseMessage response = await client.PostAsync(uri, content).ConfigureAwait(false);
-                string ans = await response.Content.ReadAsStringAsync();
-
-                req = JsonConvert.DeserializeObject<CreateUserService>(ans);
-            }
-
-            return req;
+            return await PostAsync<CreateUserService>(json, uri);
         }
     }
 
-    public class LoginService : BaseRequest
+    public class LoginService : BaseService
     {
         public UserModel User { get; set; }
 
@@ -120,56 +108,27 @@ namespace IDMONEY.IO.Service
 
         public static async Task<LoginService> LoginUser(string email, string password)
         {
-            LoginService req = new LoginService();
+            var uri = new Uri(APIDictionary.API_LoginMembership);
 
-            using (HttpClient client = new HttpClient())
+            var json = JsonConvert.SerializeObject(new
             {
-                var uri = new Uri(APIDictionary.API_LoginUser);
+                Email = email,
+                Password = password.GenerateSHA512()
+            });
 
-                var json = JsonConvert.SerializeObject(new
-                {
-                    Email = email,
-                    Password = password
-                });
-
-                var content = new StringContent(json, Encoding.UTF8, "application/json");
-                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                HttpResponseMessage response = await client.PostAsync(uri, content);
-                string ans = await response.Content.ReadAsStringAsync();
-
-                req = JsonConvert.DeserializeObject<LoginService>(ans);
-            }
-
-            return req;
+            return await PutAsync<LoginService>(json, uri);
         }
     }
 
-    public class GetUserService : BaseRequest
+    public class GetUserService : BaseService
     {
         public UserModel User { get; set; }
 
         public static async Task<GetUserService> GetUser()
         {
-            GetUserService req = new GetUserService();
+            var uri = new Uri(APIDictionary.API_GetUser);
 
-            using (HttpClient client = new HttpClient())
-            {
-                var uri = new Uri(APIDictionary.API_GetUser);
-
-                var json = JsonConvert.SerializeObject(new
-                {
-                });
-
-                var content = new StringContent(json, Encoding.UTF8, "application/json");
-                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                client.DefaultRequestHeaders.Add("Authorization", UserService.GetUser().Token);
-                HttpResponseMessage response = await client.PostAsync(uri, content).ConfigureAwait(false);
-                string ans = await response.Content.ReadAsStringAsync();
-
-                req = JsonConvert.DeserializeObject<GetUserService>(ans);
-            }
-
-            return req;
+            return await GetAsync<GetUserService>(uri, UserService.GetUser().Token);
         }
     }
 }

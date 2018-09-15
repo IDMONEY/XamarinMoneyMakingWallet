@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
 
-namespace IDMONEY.IO.Model
+namespace IDMONEY.IO.Service
 {
     public class TransactionModel : Transaction, INotifyPropertyChanged
     {
@@ -11,7 +11,7 @@ namespace IDMONEY.IO.Model
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged(string propertyName)
         {
-            if (PropertyChanged != null) // if there is any subscribers 
+            if (PropertyChanged.IsNotNull()) // if there is any subscribers 
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
         #endregion

@@ -23,7 +23,7 @@ namespace IDMONEY.IO.View
         private void Cell_OnTapped(object sender, EventArgs e)
         {
             var viewCell = (ViewCell)sender;
-            if (viewCell.View != null)
+            if (viewCell.View.IsNotNull())
             {
                 viewCell.View.BackgroundColor = Color.White;
             }

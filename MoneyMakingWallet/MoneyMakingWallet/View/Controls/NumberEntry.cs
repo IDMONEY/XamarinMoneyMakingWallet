@@ -131,7 +131,7 @@ namespace IDMONEY.IO.View
                     entry.MaximumAmount = 100;
                 }
 
-                if (oldValue == null)
+                if (oldValue.IsNull())
                 {
                     entry.ChangeText();
                 }

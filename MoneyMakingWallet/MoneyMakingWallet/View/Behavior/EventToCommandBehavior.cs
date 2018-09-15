@@ -16,7 +16,7 @@ namespace IDMONEY.IO.View
             base.OnAttachedTo(bindable);
             AssociatedObject = bindable;
 
-            if (bindable.BindingContext != null)
+            if (bindable.BindingContext.IsNotNull())
             {
                 BindingContext = bindable.BindingContext;
             }
@@ -96,7 +96,7 @@ namespace IDMONEY.IO.View
             }
 
             EventInfo eventInfo = AssociatedObject.GetType().GetRuntimeEvent(name);
-            if (eventInfo == null)
+            if (eventInfo.IsNull())
             {
                 throw new ArgumentException(string.Format("EventToCommandBehavior: Can't register the '{0}' event.", EventName));
             }
@@ -112,12 +112,12 @@ namespace IDMONEY.IO.View
                 return;
             }
 
-            if (eventHandler == null)
+            if (eventHandler.IsNull())
             {
                 return;
             }
             EventInfo eventInfo = AssociatedObject.GetType().GetRuntimeEvent(name);
-            if (eventInfo == null)
+            if (eventInfo.IsNull())
             {
                 throw new ArgumentException(string.Format("EventToCommandBehavior: Can't de-register the '{0}' event.", EventName));
             }
@@ -127,17 +127,17 @@ namespace IDMONEY.IO.View
 
         void OnEvent(object sender, object eventArgs)
         {
-            if (Command == null)
+            if (Command.IsNull())
             {
                 return;
             }
 
             object resolvedParameter;
-            if (CommandParameter != null)
+            if (CommandParameter.IsNotNull())
             {
                 resolvedParameter = CommandParameter;
             }
-            else if (Converter != null)
+            else if (Converter.IsNotNull())
             {
                 resolvedParameter = Converter.Convert(eventArgs, typeof(object), null, null);
             }
@@ -155,7 +155,7 @@ namespace IDMONEY.IO.View
         static void OnEventNameChanged(BindableObject bindable, object oldValue, object newValue)
         {
             var behavior = (EventToCommandBehavior)bindable;
-            if (behavior.AssociatedObject == null)
+            if (behavior.AssociatedObject.IsNull())
             {
                 return;
             }
