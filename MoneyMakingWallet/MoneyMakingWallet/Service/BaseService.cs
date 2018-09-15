@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace IDMONEY.IO.Model
 {
-    public class BaseService
+    public abstract class BaseService
     {
         public bool IsSuccessful { get; set; }
 

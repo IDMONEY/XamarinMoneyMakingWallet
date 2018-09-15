@@ -1,8 +1,7 @@
-﻿using Realms;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using Xamarin.Forms;
+﻿#region Libraries
+using Realms;
+using Xamarin.Forms; 
+#endregion
 
 namespace IDMONEY.IO.Model
 {
