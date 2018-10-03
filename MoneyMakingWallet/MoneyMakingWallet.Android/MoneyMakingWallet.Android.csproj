@@ -114,10 +114,6 @@
     <AndroidResource Include="Resources\drawable-xxhdpi\pay.png" />
     <AndroidResource Include="Resources\drawable-hdpi\pay.png" />
     <AndroidResource Include="Resources\drawable\pay.png" />
-    <AndroidResource Include="Resources\drawable\splash.jpg" />
-    <AndroidResource Include="Resources\drawable-hdpi\splash.jpg" />
-    <AndroidResource Include="Resources\drawable-xhdpi\splash.jpg" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\splash.jpg" />
     <AndroidResource Include="Resources\drawable\home.png" />
     <AndroidResource Include="Resources\drawable-hdpi\home.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\home.png" />
@@ -126,6 +122,10 @@
     <AndroidResource Include="Resources\drawable-hdpi\icon.jpg" />
     <AndroidResource Include="Resources\drawable-xhdpi\icon.jpg" />
     <AndroidResource Include="Resources\drawable-xxhdpi\icon.jpg" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\splash.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\splash.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\splash.png" />
+    <AndroidResource Include="Resources\drawable\splash.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

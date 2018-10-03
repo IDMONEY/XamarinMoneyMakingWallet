@@ -8,8 +8,7 @@ namespace IDMONEY.IO.Model
     //TODO: Store this information on configuration file
     public static class APIDictionary
     {
-        private const string Base = "http://2a230911.ngrok.io/WebApiMoneyMakingWallet2/";
-
+        private const string Base = "http://b5d65b07.ngrok.io/WebApiMoneyMakingWallet2/";
         #region Users
         public const string API_InsertUser = Base + "api/users";
         public const string API_LoginMembership = Base + "api/membership/login";
