@@ -24,7 +24,7 @@ namespace IDMONEY.IO.ViewModel
 
         private HomeViewModel()
         {
-            initClass();
+            initClassAsync();
             initCommands();
         }
         #endregion
@@ -67,7 +67,7 @@ namespace IDMONEY.IO.ViewModel
         #endregion
 
         #region Public Methods
-        public async void FillData()
+        public async void FillDataAsync()
         {
             try
             {
@@ -103,9 +103,9 @@ namespace IDMONEY.IO.ViewModel
         #endregion
 
         #region private methods
-        private void initClass()
+        private void initClassAsync()
         {
-            FillData();
+            FillDataAsync();
         }
 
         private void initCommands()

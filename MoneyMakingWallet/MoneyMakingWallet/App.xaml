@@ -43,13 +43,15 @@
             <!--                                   COLORS                                  -->
             <!--///////////////////////////////////////////////////////////////////////////-->
 
-            <Color x:Key="Main_Primary">#00A5DB</Color>
+            <Color x:Key="Main_Primary">#6D6E71</Color>
             <Color x:Key="General_DefaultColor">#9b9b9b</Color>
             <Color x:Key="General_ColorError">#F87272</Color>
             <Color x:Key="General_ColorSuccessful">#76A932</Color>
             <Color x:Key="General_ColorWarning">#FFAF1E</Color>
-            <Color x:Key="General_ButtonColor">#237AFC</Color>
+            <Color x:Key="Main_ButtonColor">#D6B353</Color>
+
             
+
 
             <!--///////////////////////////////////////////////////////////////////////////-->
         </ResourceDictionary>

@@ -17,7 +17,7 @@ namespace IDMONEY.IO.View
 		{
 			InitializeComponent ();
 
-            BindingContext = HomeViewModel.GetInstance();
+            BindingContext = HomeViewModel.GetInstance(true);
         }
 
         private void Cell_OnTapped(object sender, EventArgs e)

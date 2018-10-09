@@ -97,7 +97,7 @@
                     <!--Buttons-->
                     <Button Text="{StaticResource Register}" 
                         TextColor="White" 
-                        BackgroundColor="#D6B353" 
+                        BackgroundColor="{StaticResource Main_ButtonColor}" 
                         BorderRadius="25" 
                         Command="{Binding RegisterUserCommand}" 
                         IsEnabled="{Binding IsValidUser}"/>

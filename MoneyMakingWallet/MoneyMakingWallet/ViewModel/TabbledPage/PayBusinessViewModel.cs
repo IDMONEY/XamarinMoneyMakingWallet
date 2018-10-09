@@ -157,7 +157,7 @@ namespace IDMONEY.IO.ViewModel
                 }
                 else
                 {
-                    HomeViewModel.GetInstance().FillData();
+                    HomeViewModel.GetInstance().FillDataAsync();
                     base.PopToRoot();
                 }
                 IsBusy = false;

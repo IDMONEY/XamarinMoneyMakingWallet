@@ -81,7 +81,7 @@
                     <!--Buttons-->
                     <Button Text="{StaticResource Login}" 
                         TextColor="White" 
-                        BackgroundColor="#D6B353" 
+                        BackgroundColor="{StaticResource Main_ButtonColor}" 
                         BorderRadius="25" 
                         Command="{Binding AuthenticateCommand}" 
                         IsEnabled="{Binding IsValidUser}"/>

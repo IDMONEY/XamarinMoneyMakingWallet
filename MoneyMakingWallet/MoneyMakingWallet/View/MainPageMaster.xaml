@@ -4,25 +4,10 @@
              x:Class="IDMONEY.IO.View.MainPageMaster"
              Title="Master">
     <StackLayout VerticalOptions="FillAndExpand">
-        <Grid BackgroundColor="#6D6E71">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="10"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="10"/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="30"/>
-                <RowDefinition Height="80"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="10"/>
-            </Grid.RowDefinitions>
-            <Label
-                              Grid.Column="1"
-                              Grid.Row="2"
-                              Text="MIAMI WALLET"
-                              TextColor="White"
-                              FontSize="20"/>
-        </Grid>
+        <StackLayout BackgroundColor="{StaticResource Main_Primary}" HeightRequest="150">
+            <Image Margin="5,0,0,15" Source="log_front.png" HeightRequest="60" WidthRequest="200" 
+                   VerticalOptions="EndAndExpand" HorizontalOptions="Start"/>
+        </StackLayout>
         <Grid x:Name="btnOverview" Padding="15,10" HorizontalOptions="FillAndExpand">
             <Grid.GestureRecognizers>
                 <TapGestureRecognizer Tapped="btnOverview_Tapped">
@@ -43,7 +28,7 @@
 
         <Button Text="{StaticResource Logout}" 
                         TextColor="White" 
-                        BackgroundColor="#D6B353" 
+                        BackgroundColor="{StaticResource Main_ButtonColor}" 
                         BorderRadius="25" 
                         VerticalOptions="End"
                         Margin="0,0,0,20"
