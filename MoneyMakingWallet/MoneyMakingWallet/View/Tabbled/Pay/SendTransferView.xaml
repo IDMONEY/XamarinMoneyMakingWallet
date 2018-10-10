@@ -16,13 +16,33 @@
                                                Aspect="AspectFill" HorizontalOptions="CenterAndExpand" VerticalOptions="Start" Margin="0,10"/>
                     <Label HorizontalOptions="CenterAndExpand" XAlign="Center" HorizontalTextAlignment="Center" Text="{Binding Business.Name}" FontSize="16"/>
 
-                    <local:NumberEntry Placeholder="{StaticResource Amount}" Amount="{Binding Transaction.Amount}" Margin="20,10" FontSize="18" HorizontalTextAlignment="Center">
-                        <local:NumberEntry.Behaviors>
-                            <local:EventToCommandBehavior EventName="TextChanged" Command="{Binding ValidateTransferCommand}" />
-                        </local:NumberEntry.Behaviors>
-                    </local:NumberEntry>
+                    <StackLayout HorizontalOptions="FillAndExpand" IsClippedToBounds="True" Spacing="0">
+                        <local:NumberEntry Placeholder="{StaticResource Amount}" Amount="{Binding Transaction.Amount}" Margin="20,10" FontSize="Large" HorizontalTextAlignment="Center">
+                            <local:NumberEntry.Behaviors>
+                                <local:EventToCommandBehavior EventName="TextChanged" Command="{Binding ValidateTransferCommand}" />
+                            </local:NumberEntry.Behaviors>
+                        </local:NumberEntry>
+                        <Label Text="{StaticResource Tokens}" FontSize="14" TextColor="{StaticResource General_DefaultColor}" HorizontalTextAlignment="Center">
+                            <Label.Margin>
+                                <OnPlatform x:TypeArguments="Thickness">
+                                    <On Platform="Android" Value="0, -7, 0, 0"/>
+                                    <On Platform="iOS" Value="0, 10, 0, 0"/>
+                                </OnPlatform>
+                            </Label.Margin>
+                        </Label>
+                    </StackLayout>
 
-                    <Editor Margin="20,0" Text="{Binding Transaction.Description}" VerticalOptions="CenterAndExpand" FontSize="14" HeightRequest="80"/>
+                    <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" IsClippedToBounds="True" Spacing="0">
+                        <Editor Margin="20,0" Text="{Binding Transaction.Description}" VerticalOptions="Start" FontSize="14" HeightRequest="80"/>
+                        <Label Text="{StaticResource Description}" FontSize="14" VerticalOptions="Start" TextColor="{StaticResource General_DefaultColor}" HorizontalTextAlignment="Center">
+                            <Label.Margin>
+                                <OnPlatform x:TypeArguments="Thickness">
+                                    <On Platform="Android" Value="0, -5, 0, 0"/>
+                                    <On Platform="iOS" Value="0, 10, 0, 0"/>
+                                </OnPlatform>
+                            </Label.Margin>
+                        </Label>
+                    </StackLayout>
 
                     <Button Text="{StaticResource Pay}" 
                         TextColor="White" 

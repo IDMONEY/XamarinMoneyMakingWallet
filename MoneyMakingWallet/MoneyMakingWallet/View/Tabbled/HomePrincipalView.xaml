@@ -16,7 +16,7 @@
                 <Label HorizontalOptions="Center" Text="{Binding User.AvailableBalance, Converter={StaticResource cnvNumberConverter}, ConverterParameter='Amount'}" FontSize="20"/>
 
                 <Label HorizontalOptions="Center" Text="{StaticResource LastTransfers}" FontSize="16" Margin="0,15,0,0"/>
-                <ListView 
+                <ListView Margin="10,0"
                       SeparatorVisibility="None"
                       RowHeight="50"
                       ItemsSource="{Binding lstTransfers}">

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Runtime.Serialization;
-using System.Text;
-
-namespace IDMONEY.IO.Model
+﻿namespace IDMONEY.IO.Model
 {
     //TODO: Store this information on configuration file
     public static class APIDictionary

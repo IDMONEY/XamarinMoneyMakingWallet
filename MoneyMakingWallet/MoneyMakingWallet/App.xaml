@@ -37,6 +37,9 @@
             <x:String x:Key="Amount">Amount</x:String>
             <x:String x:Key="AvailableBalance">Available Balance</x:String>
             <x:String x:Key="LastTransfers">Last Transfers</x:String>
+            <x:String x:Key="Description">Description</x:String>
+            <x:String x:Key="Tokens">Tokens</x:String>
+
             
 
             <!--///////////////////////////////////////////////////////////////////////////-->

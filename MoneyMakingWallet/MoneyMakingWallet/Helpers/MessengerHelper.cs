@@ -1,6 +1,7 @@
 ﻿#region Libraries
 using Acr.UserDialogs;
-using IDMONEY.IO.Model; 
+using IDMONEY.IO.Model;
+using System;
 #endregion
 
 namespace IDMONEY.IO.Helpers
@@ -14,7 +15,10 @@ namespace IDMONEY.IO.Helpers
 
         public static void Toast(string msg)
         {
-            UserDialogs.Instance.Toast(msg);
+            UserDialogs.Instance.Toast(new ToastConfig(msg)
+                   .SetDuration(TimeSpan.FromSeconds(5))
+                   .SetPosition(ToastPosition.Bottom)
+       );
         }
 
         public static void ShowError(Error error, bool isAlert)
