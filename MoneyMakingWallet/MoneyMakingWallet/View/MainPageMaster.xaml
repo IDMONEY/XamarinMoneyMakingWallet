@@ -5,7 +5,7 @@
              Title="Master">
     <StackLayout VerticalOptions="FillAndExpand">
         <StackLayout BackgroundColor="{StaticResource Main_Primary}" HeightRequest="150">
-            <Image Margin="5,0,0,15" Source="log_front.png" HeightRequest="60" WidthRequest="200" 
+            <Image Margin="10,0,0,15" Source="log_front.png" Aspect="AspectFill" HeightRequest="90" WidthRequest="240" 
                    VerticalOptions="EndAndExpand" HorizontalOptions="Start"/>
         </StackLayout>
         <Grid x:Name="btnOverview" Padding="15,10" HorizontalOptions="FillAndExpand">
