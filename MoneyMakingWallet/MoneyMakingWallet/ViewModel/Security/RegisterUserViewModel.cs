@@ -1,10 +1,7 @@
 ﻿using IDMONEY.IO.Helpers;
-using IDMONEY.IO.Model;
 using IDMONEY.IO.Service;
 using IDMONEY.IO.View;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Windows.Input;
 using Xamarin.Forms;
 
@@ -19,8 +16,11 @@ namespace IDMONEY.IO.ViewModel
             get { return _email; }
             set
             {
-                _email = value;
-                OnPropertyChanged(nameof(Email));
+                if (_email != value)
+                {
+                    _email = value;
+                    OnPropertyChanged(nameof(Email));
+                }
             }
         }
 
@@ -30,8 +30,11 @@ namespace IDMONEY.IO.ViewModel
             get { return _password; }
             set
             {
-                _password = value;
-                OnPropertyChanged(nameof(Password));
+                if (_password != value)
+                {
+                    _password = value;
+                    OnPropertyChanged(nameof(Password));
+                }
             }
         }
 
@@ -41,8 +44,11 @@ namespace IDMONEY.IO.ViewModel
             get { return _confirmPassword; }
             set
             {
-                _confirmPassword = value;
-                OnPropertyChanged(nameof(ConfirmPassword));
+                if (_confirmPassword != value)
+                {
+                    _confirmPassword = value;
+                    OnPropertyChanged(nameof(ConfirmPassword));
+                }
             }
         }
 
@@ -52,8 +58,11 @@ namespace IDMONEY.IO.ViewModel
             get { return _isValidUser; }
             set
             {
-                _isValidUser = value;
-                OnPropertyChanged(nameof(IsValidUser));
+                if (_isValidUser != value)
+                {
+                    _isValidUser = value;
+                    OnPropertyChanged(nameof(IsValidUser));
+                }
             }
         }
         #endregion
@@ -67,18 +76,18 @@ namespace IDMONEY.IO.ViewModel
         #region Public Methods
         public RegisterUserViewModel()
         {
-            initClass();
-            initCommands();
+            InitClass();
+            InitCommands();
         }
         #endregion
 
         #region Private Methods
-        private void initClass()
+        protected override void InitClass()
         {
 
         }
 
-        private void initCommands()
+        protected override void InitCommands()
         {
             RegisterUserCommand = new Command(RegisterUserAsync);
             ValidateUserCommand = new Command(ValidateUser);
@@ -90,7 +99,7 @@ namespace IDMONEY.IO.ViewModel
             {
                 IsBusy = true;
 
-                CreateUserService req = await CreateUserService.CreateUser(Email, Password);
+                CreateUserService req = await CreateUserService.CreateUserAsync(Email, Password);
 
                 if (!req.IsSuccessful)
                 {

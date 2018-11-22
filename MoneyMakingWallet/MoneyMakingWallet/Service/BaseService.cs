@@ -78,6 +78,43 @@ namespace IDMONEY.IO.Model
             }
         }
 
+        public static Request Get<Request>(Uri uri, string token = null, Dictionary<string, string> parameters = null) where Request : BaseService
+        {
+            StringBuilder paramsBuilder = new StringBuilder();
+            if (parameters.IsNotNull())
+            {
+                foreach (KeyValuePair<string, string> param in parameters)
+                {
+                    if (paramsBuilder.Length > 0)
+                    {
+                        paramsBuilder.Append("&");
+                    }
+                    paramsBuilder.Append($"{param.Key}={param.Value}");
+                }
+            }
+
+            UriBuilder builder = new UriBuilder(uri);
+            builder.Query = paramsBuilder.ToString();
+
+            using (HttpClient client = new HttpClient())
+            {
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                if (!string.IsNullOrEmpty(token))
+                {
+                    client.DefaultRequestHeaders.Add("Authorization", token);
+                }
+
+                HttpResponseMessage response = client.GetAsync(builder.Uri).Result;
+                if (response.StatusCode != System.Net.HttpStatusCode.OK)
+                {
+                    throw new Exception("Exception from api");
+                }
+
+                string ans = response.Content.ReadAsStringAsync().Result;
+                return JsonConvert.DeserializeObject<Request>(ans);
+            }
+        }
+
         public async static Task<Request> PutAsync<Request>(string json, Uri uri, string token = null) where Request : BaseService
         {
             using (HttpClient client = new HttpClient())

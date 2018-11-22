@@ -2,9 +2,6 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.ObjectModel;
-using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace IDMONEY.IO.Service
@@ -27,7 +24,14 @@ namespace IDMONEY.IO.Service
             return await PostAsync<TransactionService>(json, uri, UserService.GetUser().Token);
         }
 
-        public static async Task<TransactionService> SearchTransaction()
+        public static TransactionService SearchTransaction()
+        {
+            var uri = new Uri(APIDictionary.API_TransactionsList);
+
+            return Get<TransactionService>(uri, UserService.GetUser().Token);
+        }
+
+        public static async Task<TransactionService> SearchTransactionAsync()
         {
             var uri = new Uri(APIDictionary.API_TransactionsList);
 

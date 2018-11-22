@@ -4,7 +4,7 @@ using IDMONEY.IO.Service;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Text;
+using System.Threading.Tasks;
 
 namespace IDMONEY.IO.ViewModel
 {
@@ -24,8 +24,8 @@ namespace IDMONEY.IO.ViewModel
 
         private HomeViewModel()
         {
-            initClassAsync();
-            initCommands();
+            InitClass();
+            InitCommands();
         }
         #endregion
 
@@ -44,8 +44,11 @@ namespace IDMONEY.IO.ViewModel
             }
             set
             {
-                _user = value;
-                OnPropertyChanged(nameof(User));
+                if (_user != value)
+                {
+                    _user = value;
+                    OnPropertyChanged(nameof(User));
+                }
             }
         }
 
@@ -59,8 +62,11 @@ namespace IDMONEY.IO.ViewModel
             }
             set
             {
-                _lstTransfers = value;
-                OnPropertyChanged(nameof(lstTransfers));
+                if (_lstTransfers != value)
+                {
+                    _lstTransfers = value;
+                    OnPropertyChanged(nameof(lstTransfers));
+                }
             }
         }
 
@@ -73,24 +79,35 @@ namespace IDMONEY.IO.ViewModel
             {
                 IsBusy = true;
 
-                GetUserService req = await GetUserService.GetUser();
+                List<Error> errors = new List<Error>();
+                await Task.WhenAll(
+                    Task.Run(() =>
+                    {
+                        GetUserService req = GetUserService.GetUser();
 
-                if (!req.IsSuccessful)
-                {
-                    IsBusy = false;
-                    ErrorHelper.ControlError(req.Errors, false);
-                    return;
-                }
-                User = req.User;
-
-                TransactionService transactionService = await TransactionService.SearchTransaction();
-                if (!transactionService.IsSuccessful)
-                {
-                    IsBusy = false;
-                    ErrorHelper.ControlError(req.Errors, false);
-                    return;
-                }
-                lstTransfers = transactionService.Transactions;
+                        if (!req.IsSuccessful)
+                        {
+                            lock (errors)
+                            {
+                                errors.AddRange(req.Errors);
+                            }
+                            return;
+                        }
+                        User = req.User;
+                    }),
+                    Task.Run(() =>
+                    {
+                        TransactionService req = TransactionService.SearchTransaction();
+                        if (!req.IsSuccessful)
+                        {
+                            lock (errors)
+                            {
+                                errors.AddRange(req.Errors);
+                            }
+                            return;
+                        }
+                        lstTransfers = req.Transactions;
+                    }));
 
                 IsBusy = false;
             }
@@ -103,14 +120,14 @@ namespace IDMONEY.IO.ViewModel
         #endregion
 
         #region private methods
-        private void initClassAsync()
+
+        protected override void InitClass()
         {
             FillDataAsync();
         }
 
-        private void initCommands()
+        protected override void InitCommands()
         {
-
         }
         #endregion
     }

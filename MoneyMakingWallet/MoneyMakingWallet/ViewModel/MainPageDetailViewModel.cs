@@ -1,16 +1,4 @@
-﻿using IDMONEY.IO.Helpers;
-using IDMONEY.IO.Model;
-using IDMONEY.IO.Service;
-using IDMONEY.IO.View;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
-using Xamarin.Forms;
-
-namespace IDMONEY.IO.ViewModel
+﻿namespace IDMONEY.IO.ViewModel
 {
     public class MainPageDetailViewModel : ViewModelBase
     {
@@ -24,17 +12,17 @@ namespace IDMONEY.IO.ViewModel
         #region Public Methods
         public MainPageDetailViewModel()
         {
-            initCommands();
-            initClass();
+            InitCommands();
+            InitClass();
         }
         #endregion
 
         #region Private Methods
-        private void initCommands()
+        protected override void InitCommands()
         {
         }
 
-        private void initClass()
+        protected override void InitClass()
         {
 
         }

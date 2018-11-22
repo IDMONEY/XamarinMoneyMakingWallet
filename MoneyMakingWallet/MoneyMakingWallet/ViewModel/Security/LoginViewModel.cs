@@ -1,11 +1,8 @@
 ﻿using IDMONEY.IO.Helpers;
-using IDMONEY.IO.Model;
 using IDMONEY.IO.Service;
 using IDMONEY.IO.View;
 using IDMONEY.IO.View.Security;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Windows.Input;
 using Xamarin.Forms;
 
@@ -20,8 +17,11 @@ namespace IDMONEY.IO.ViewModel
             get { return _email; }
             set
             {
-                _email = value;
-                OnPropertyChanged(nameof(Email));
+                if (_email != value)
+                {
+                    _email = value;
+                    OnPropertyChanged(nameof(Email));
+                }
             }
         }
 
@@ -31,8 +31,11 @@ namespace IDMONEY.IO.ViewModel
             get { return _password; }
             set
             {
-                _password = value;
-                OnPropertyChanged(nameof(Password));
+                if (_password != value)
+                {
+                    _password = value;
+                    OnPropertyChanged(nameof(Password));
+                }
             }
         }
 
@@ -42,8 +45,11 @@ namespace IDMONEY.IO.ViewModel
             get { return _isValidUser; }
             set
             {
-                _isValidUser = value;
-                OnPropertyChanged(nameof(IsValidUser));
+                if (_isValidUser != value)
+                {
+                    _isValidUser = value;
+                    OnPropertyChanged(nameof(IsValidUser));
+                }
             }
         }
         #endregion
@@ -63,17 +69,17 @@ namespace IDMONEY.IO.ViewModel
         #region Public Methods
         public LoginViewModel()
         {
-            initClass();
-            initCommands();
+            InitClass();
+            InitCommands();
         }
         #endregion
         #region Private Methods
-        private void initClass()
+        protected override void InitClass()
         {
 
         }
 
-        private void initCommands()
+        protected override void InitCommands()
         {
             ValidateUserCommand = new Command(ValidateUser);
             GoToForgotPasswordCommand = new Command(GoToForgotPassword);
@@ -87,7 +93,7 @@ namespace IDMONEY.IO.ViewModel
             {
                 IsBusy = true;
 
-                LoginService req = await LoginService.LoginUser(Email, Password);
+                LoginService req = await LoginService.LoginUserAsync(Email, Password);
 
                 if (!req.IsSuccessful)
                 {

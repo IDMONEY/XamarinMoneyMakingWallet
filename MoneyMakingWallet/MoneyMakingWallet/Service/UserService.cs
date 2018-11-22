@@ -84,7 +84,7 @@ namespace IDMONEY.IO.Service
 
         public string Token { get; set; }
 
-        public static async Task<CreateUserService> CreateUser(string email, string password)
+        public static async Task<CreateUserService> CreateUserAsync(string email, string password)
         {
             var uri = new Uri(APIDictionary.API_InsertUser);
 
@@ -104,7 +104,7 @@ namespace IDMONEY.IO.Service
 
         public string Token { get; set; }
 
-        public static async Task<LoginService> LoginUser(string email, string password)
+        public static async Task<LoginService> LoginUserAsync(string email, string password)
         {
             var uri = new Uri(APIDictionary.API_LoginMembership);
 
@@ -122,11 +122,18 @@ namespace IDMONEY.IO.Service
     {
         public UserModel User { get; set; }
 
-        public static async Task<GetUserService> GetUser()
+        public static async Task<GetUserService> GetUserAsync()
         {
             var uri = new Uri(APIDictionary.API_GetUser);
 
             return await GetAsync<GetUserService>(uri, UserService.GetUser().Token);
+        }
+
+        public static GetUserService GetUser()
+        {
+            var uri = new Uri(APIDictionary.API_GetUser);
+
+            return Get<GetUserService>(uri, UserService.GetUser().Token);
         }
     }
 }

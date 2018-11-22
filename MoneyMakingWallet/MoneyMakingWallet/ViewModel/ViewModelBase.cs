@@ -3,7 +3,7 @@ using Xamarin.Forms;
 
 namespace IDMONEY.IO.ViewModel
 {
-    public class ViewModelBase : INotifyPropertyChanged
+    public abstract class ViewModelBase : INotifyPropertyChanged
     {
         #region INotifyPropertyChanged Implementation
         public event PropertyChangedEventHandler PropertyChanged;
@@ -21,14 +21,21 @@ namespace IDMONEY.IO.ViewModel
             get { return _isBusy; }
             set
             {
-                _isBusy = value;
-                OnPropertyChanged(nameof(IsBusy));
+                if(_isBusy != value)
+                {
+                    _isBusy = value;
+                    OnPropertyChanged(nameof(IsBusy));
+                }
             }
         }
         #endregion
 
+        protected abstract void InitClass();
+
+        protected abstract void InitCommands();
+
         #region Public Methods
-        public void AddPage(Page page, bool clearStack = false)
+        protected void AddPage(Page page, bool clearStack = false)
         {
             INavigation navigation = ((MasterDetailPage)App.Current.MainPage).Detail.Navigation;
 

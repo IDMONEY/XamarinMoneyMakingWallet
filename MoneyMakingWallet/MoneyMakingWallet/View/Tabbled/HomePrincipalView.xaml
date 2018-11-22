@@ -5,8 +5,9 @@
              xmlns:local="clr-namespace:IDMONEY.IO.View;assembly=IDMONEY.IO">
     <ContentPage.Resources>
         <ResourceDictionary>
-            <local:NumberConverter x:Key="cnvNumberConverter"></local:NumberConverter>
-            <local:Base64Converter x:Key="cnvBase64Converter"></local:Base64Converter>
+            <local:NumberConverter x:Key="cnvNumberConverter"/>
+            <local:Base64Converter x:Key="cnvBase64Converter"/>
+            <local:DateConverter x:Key="cnvDateConverter"/>
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
@@ -29,19 +30,20 @@
                                         <ColumnDefinition Width="*"/>
                                     </Grid.ColumnDefinitions>
                                     <Grid.RowDefinitions>
-                                        <RowDefinition Height="30"/>
-                                        <RowDefinition Height="20"/>
+                                        <RowDefinition Height="25"/>
+                                        <RowDefinition Height="25"/>
                                     </Grid.RowDefinitions>
                                     <Image Grid.Row="0" Grid.Column="0" Grid.RowSpan="1" Source="{Binding Image, Converter={StaticResource cnvBase64Converter}}" 
                                                Aspect="AspectFill" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
                                     <AbsoluteLayout Grid.Row="0" Grid.Column="1" HorizontalOptions="FillAndExpand">
-                                        <StackLayout  Orientation="Horizontal" HorizontalOptions="Start" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All">
-                                            <Label HorizontalOptions="Start" Text="{Binding BusinessName}" FontSize="12"/>
-                                        </StackLayout>
+                                        <Label  HorizontalOptions="Start" Text="{Binding BusinessName}" FontSize="13" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" TextColor="#4d4d4d"/>
+                                        
                                         <Label AbsoluteLayout.LayoutBounds="1,1,1,1" AbsoluteLayout.LayoutFlags="All" Text="{Binding Amount, Converter={StaticResource cnvNumberConverter}, ConverterParameter='Amount'}"
-                                              FontSize="12" FontAttributes="Bold" HorizontalOptions="EndAndExpand"
+                                              FontSize="13" FontAttributes="Bold" HorizontalOptions="EndAndExpand" TextColor="#4d4d4d"
                                                VerticalOptions="Start" BackgroundColor="White"/>
                                     </AbsoluteLayout>
+                                    <Label Grid.Row="1" Grid.Column="1" HorizontalOptions="Start" VerticalOptions="Start" 
+                                           Text="{Binding ProcessingDate, Converter={StaticResource cnvDateConverter}, ConverterParameter='MonthAndDay'}" FontSize="12" TextColor="{StaticResource General_DefaultColor}"/>
                                 </Grid>
                             </ViewCell>
                         </DataTemplate>

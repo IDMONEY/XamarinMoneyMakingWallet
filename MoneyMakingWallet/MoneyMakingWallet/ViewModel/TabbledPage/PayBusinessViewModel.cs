@@ -25,8 +25,11 @@ namespace IDMONEY.IO.ViewModel
             }
             set
             {
-                _lstBusiness = value;
-                OnPropertyChanged(nameof(lstBusiness));
+                if (_lstBusiness != value)
+                {
+                    _lstBusiness = value;
+                    OnPropertyChanged(nameof(lstBusiness));
+                }
             }
         }
 
@@ -40,8 +43,11 @@ namespace IDMONEY.IO.ViewModel
             }
             set
             {
-                _business = value;
-                OnPropertyChanged(nameof(Business));
+                if (_business != value)
+                {
+                    _business = value;
+                    OnPropertyChanged(nameof(Business));
+                }
             }
         }
         private TransactionModel _Transaction;
@@ -54,8 +60,11 @@ namespace IDMONEY.IO.ViewModel
             }
             set
             {
-                _Transaction = value;
-                OnPropertyChanged(nameof(Transaction));
+                if (_Transaction != value)
+                {
+                    _Transaction = value;
+                    OnPropertyChanged(nameof(Transaction));
+                }
             }
         }
 
@@ -69,8 +78,11 @@ namespace IDMONEY.IO.ViewModel
             }
             set
             {
-                _IsTransferValid = value;
-                OnPropertyChanged(nameof(IsTransferValid));
+                if (_IsTransferValid != value)
+                {
+                    _IsTransferValid = value;
+                    OnPropertyChanged(nameof(IsTransferValid));
+                }
             }
         }
         
@@ -98,13 +110,13 @@ namespace IDMONEY.IO.ViewModel
 
         private PayBusinessViewModel()
         {
-            initClass();
-            initCommands();
+            InitClass();
+            InitCommands();
         }
         #endregion
 
         #region Private Methods
-        private async void initClass()
+        protected override async void InitClass()
         {
             try
             {
@@ -129,7 +141,7 @@ namespace IDMONEY.IO.ViewModel
             }
         }
 
-        private void initCommands()
+        protected override void InitCommands()
         {
             ChooseBusinessCommand = new Command<BusinessModel>(ChooseBusiness);
             SendTransferCommand = new Command(SendTransferAsync);
@@ -187,6 +199,7 @@ namespace IDMONEY.IO.ViewModel
                 ErrorHelper.ControlError(ex);
             }
         }
+
         #endregion
     }
 }
