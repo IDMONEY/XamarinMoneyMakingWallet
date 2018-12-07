@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
-using System.Text;
 using Xamarin.Forms;
 
 namespace IDMONEY.IO.View
@@ -15,8 +13,16 @@ namespace IDMONEY.IO.View
         {
             obj = value;
 
-            byte[] Base64Stream = System.Convert.FromBase64String(value.ToString());
-            return ImageSource.FromStream(() => new MemoryStream(Base64Stream));
+            if (value.IsNotNull())
+            {
+                try
+                {
+                    byte[] Base64Stream = System.Convert.FromBase64String(value.ToString());
+                    return ImageSource.FromStream(() => new MemoryStream(Base64Stream));
+                }
+                catch (Exception) { }
+            }
+            return null;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

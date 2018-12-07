@@ -16,7 +16,7 @@
                                                Aspect="AspectFill" HorizontalOptions="CenterAndExpand" VerticalOptions="Start" Margin="0,10"/>
                     <Label HorizontalOptions="CenterAndExpand" XAlign="Center" HorizontalTextAlignment="Center" Text="{Binding Business.Name}" FontSize="16"/>
 
-                    <StackLayout HorizontalOptions="FillAndExpand" IsClippedToBounds="True" Spacing="0">
+                    <!--<StackLayout HorizontalOptions="FillAndExpand" IsClippedToBounds="True" Spacing="0">
                         <local:NumberEntry Placeholder="{StaticResource Amount}" Amount="{Binding Transaction.Amount}" Margin="20,10" FontSize="Large" HorizontalTextAlignment="Center">
                             <local:NumberEntry.Behaviors>
                                 <local:EventToCommandBehavior EventName="TextChanged" Command="{Binding ValidateTransferCommand}" />
@@ -42,7 +42,7 @@
                                 </OnPlatform>
                             </Label.Margin>
                         </Label>
-                    </StackLayout>
+                    </StackLayout>-->
 
                     <Button Text="{StaticResource Pay}" 
                         TextColor="White" 

@@ -17,31 +17,15 @@ namespace IDMONEY.IO.Model
         [PrimaryKey]
         public long Id { get; set; }
 
+
         public string Email { get; set; }
 
+        [Ignored]
+        public AccountModel Account { get; set; }
+
+        [Ignored]
+        public string Password { get; set; }
+
         public string Token { get; set; }
-
-        [Ignored]
-        public string Address { get; set; }
-
-        [Ignored]
-        public string Privatekey { get; set; }
-
-        [Ignored]
-        private decimal _availableBalance { get; set; }
-
-        [Ignored]
-        public decimal AvailableBalance
-        {
-            get { return _availableBalance; }
-            set
-            {
-                _availableBalance = value;
-                OnPropertyChanged(nameof(AvailableBalance));
-            }
-        }
-
-        [Ignored]
-        public decimal BlockedBalance { get; set; }
     }
 }

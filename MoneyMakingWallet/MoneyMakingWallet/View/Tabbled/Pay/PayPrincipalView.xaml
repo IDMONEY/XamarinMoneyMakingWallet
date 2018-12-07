@@ -11,7 +11,7 @@
     </ContentPage.Resources>
     <ContentPage.Content>
         <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
-            <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="White">
+            <!--<StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="White">
                 <ListView 
                       SeparatorVisibility="None"
                       RowHeight="50"
@@ -42,7 +42,7 @@
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
-            </StackLayout>
+            </StackLayout>-->
             <!--Loader-->
             <ContentView IsVisible="{Binding IsBusy}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                 <ActivityIndicator IsVisible="True" IsRunning="{Binding IsBusy}" Color="{StaticResource General_DefaultColor}" 
