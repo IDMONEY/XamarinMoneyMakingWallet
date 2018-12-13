@@ -39,8 +39,10 @@
             <x:String x:Key="LastTransfers">Last Transfers</x:String>
             <x:String x:Key="Description">Description</x:String>
             <x:String x:Key="Tokens">Tokens</x:String>
-
+            <x:String x:Key="RecentActivity">Recent Activity</x:String>
             
+
+
 
             <!--///////////////////////////////////////////////////////////////////////////-->
             <!--                                   COLORS                                  -->

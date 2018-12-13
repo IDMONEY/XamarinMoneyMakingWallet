@@ -3,11 +3,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="IDMONEY.IO.View.MainPageMaster"
              Title="Master">
-    <StackLayout VerticalOptions="FillAndExpand">
-        <StackLayout BackgroundColor="{StaticResource Main_Primary}" HeightRequest="150">
+    <StackLayout VerticalOptions="FillAndExpand" Spacing="0">
+        <StackLayout BackgroundColor="#F1F2F2" HeightRequest="150">
             <Image Margin="10,0,0,15" Source="log_front.png" Aspect="AspectFill" HeightRequest="90" WidthRequest="240" 
                    VerticalOptions="EndAndExpand" HorizontalOptions="Start"/>
         </StackLayout>
+        <BoxView HeightRequest="1" HorizontalOptions="FillAndExpand" BackgroundColor="#DBDBDB"/>
         <Grid x:Name="btnOverview" Padding="15,10" HorizontalOptions="FillAndExpand">
             <Grid.GestureRecognizers>
                 <TapGestureRecognizer Tapped="btnOverview_Tapped">

@@ -188,7 +188,7 @@ namespace IDMONEY.IO.ViewModel
                 Transaction = new TransactionModel()
                 {
                     ToAccountId = business.Account.Id,
-                    FromAccountId = UserService.GetUser().Account.Id
+                    FromAccountId = ServerManagement.GetInstance().User.Account.Id
                 };
                 Business = business;
                 ValidateTransfer();

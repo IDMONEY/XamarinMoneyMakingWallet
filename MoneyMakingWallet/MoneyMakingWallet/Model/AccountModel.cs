@@ -11,5 +11,6 @@
         public string PrivateKey { get; set; }
         public AccountType Type { get; set; }
         public Balance Balance { get; set; }
+        public string Symbol { get; set; }
     }
 }

@@ -6,49 +6,64 @@
     <ContentPage.Resources>
         <ResourceDictionary>
             <local:NumberConverter x:Key="cnvNumberConverter"/>
+            <local:IsBiggerThanConverter x:Key="cnvIsBiggerThanConverter"/>
+            <local:IsSmallerThanConverter x:Key="cnvIsSmallerThanConverter"/>
             <local:Base64Converter x:Key="cnvBase64Converter"/>
             <local:DateConverter x:Key="cnvDateConverter"/>
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
         <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
-            <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="White">
-                <Label HorizontalOptions="Center" Text="{StaticResource AvailableBalance}" FontSize="18" Margin="0,10,0,0"/>
-                <Label HorizontalOptions="Center" Text="{Binding User.Account.Balance.Available, Converter={StaticResource cnvNumberConverter}, ConverterParameter='Amount'}" FontSize="20"/>
+            <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="#DBDBDB">
+                <Frame CornerRadius="5" Margin="10" Padding="5,10" BackgroundColor="#f5f7f9">
+                    <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                        <Label HorizontalOptions="Center" Text="{StaticResource AvailableBalance}" FontSize="18" Margin="0,10,0,0"/>
+                        <Label HorizontalOptions="Center" Text="{Binding User.Account.Balance.Available, Converter={StaticResource cnvNumberConverter}, ConverterParameter='Amount'}" FontSize="20"/>
+                    </StackLayout>
+                </Frame>
 
-                <Label HorizontalOptions="Center" Text="{StaticResource LastTransfers}" FontSize="16" Margin="0,15,0,0"/>
-                <ListView Margin="10,0"
+                <Frame CornerRadius="5" Margin="10,0,10,10" Padding="5,10" BackgroundColor="#f5f7f9">
+                    <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                        <Label HorizontalOptions="Center" Text="{StaticResource RecentActivity}" FontSize="18" Margin="0,10,0,5"/>
+
+                        <ListView Margin="10,0"
                       SeparatorVisibility="None"
-                      RowHeight="50"
+                      HasUnevenRows="True"
                       ItemsSource="{Binding lstTransfers}">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <ViewCell Tapped="Cell_OnTapped" IsEnabled="False">
-                                <Grid Padding="5,10" HorizontalOptions="FillAndExpand" RowSpacing="0">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="40"/>
-                                        <ColumnDefinition Width="*"/>
-                                    </Grid.ColumnDefinitions>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="25"/>
-                                        <RowDefinition Height="25"/>
-                                    </Grid.RowDefinitions>
-                                    <Image Grid.Row="0" Grid.Column="0" Grid.RowSpan="1" Source="{Binding Image, Converter={StaticResource cnvBase64Converter}}" 
-                                               Aspect="AspectFill" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
-                                    <AbsoluteLayout Grid.Row="0" Grid.Column="1" HorizontalOptions="FillAndExpand">
-                                        <Label  HorizontalOptions="Start" Text="{Binding BusinessName}" FontSize="13" AbsoluteLayout.LayoutBounds="0,0,1,1" AbsoluteLayout.LayoutFlags="All" TextColor="#4d4d4d"/>
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell IsEnabled="False" >
+                                        <Grid HorizontalOptions="FillAndExpand" RowSpacing="0">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="100"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="25"/>
+                                                <RowDefinition Height="25"/>
+                                            </Grid.RowDefinitions>
+                                            <Label Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Text="{Binding Description}"
+                                                  FontSize="15" HorizontalOptions="StartAndExpand" TextColor="#4d4d4d"
+                                                   VerticalOptions="StartAndExpand"/>
+                                            
+                                            <Label Grid.Row="0" Grid.Column="1" Text="{Binding Amount, Converter={StaticResource cnvNumberConverter}, ConverterParameter='Amount'}"
+                                                  FontSize="15" FontAttributes="Bold" HorizontalOptions="EndAndExpand" TextColor="#299976"
+                                                   VerticalOptions="Start" IsVisible="{Binding Amount,Converter={StaticResource cnvIsBiggerThanConverter},ConverterParameter='0'}"/>
 
-                                        <Label AbsoluteLayout.LayoutBounds="1,1,1,1" AbsoluteLayout.LayoutFlags="All" Text="{Binding Amount, Converter={StaticResource cnvNumberConverter}, ConverterParameter='Amount'}"
-                                              FontSize="13" FontAttributes="Bold" HorizontalOptions="EndAndExpand" TextColor="#4d4d4d"
-                                               VerticalOptions="Start" BackgroundColor="White"/>
-                                    </AbsoluteLayout>
-                                    <Label Grid.Row="1" Grid.Column="1" HorizontalOptions="Start" VerticalOptions="Start" 
-                                           Text="{Binding ProcessingDate, Converter={StaticResource cnvDateConverter}, ConverterParameter='MonthAndDay'}" FontSize="12" TextColor="{StaticResource General_DefaultColor}"/>
-                                </Grid>
-                            </ViewCell>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
+                                            <Label Grid.Row="0" Grid.Column="1" Text="{Binding Amount, Converter={StaticResource cnvNumberConverter}, ConverterParameter='Amount'}"
+                                                  FontSize="15" FontAttributes="Bold" HorizontalOptions="EndAndExpand" TextColor="#2c3e50"
+                                                   VerticalOptions="Start" IsVisible="{Binding Amount,Converter={StaticResource cnvIsSmallerThanConverter},ConverterParameter='0'}"/>
+
+                                            <Label Grid.Row="1" Grid.Column="1" HorizontalOptions="EndAndExpand" VerticalOptions="Start" 
+                                               Text="{Binding ProcessingDate, Converter={StaticResource cnvDateConverter}, ConverterParameter='MonthAndDay'}" 
+                                               FontSize="13" TextColor="{StaticResource General_DefaultColor}"/>
+                                        </Grid>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </StackLayout>
+                </Frame>
             </StackLayout>
             <!--Loader-->
             <ContentView IsVisible="{Binding IsBusy}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">

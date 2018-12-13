@@ -94,10 +94,29 @@ namespace IDMONEY.IO.ViewModel
                             return;
                         }
                         User = req.User;
+                        ServerManagement.GetInstance().User = req.User;
                     }),
                     Task.Run(() =>
                     {
-                        TransactionService req = TransactionService.SearchTransaction();
+                        ObservableCollection<TransactionModel> transactions = new ObservableCollection<TransactionModel>();
+
+                        //TransactionService req = TransactionService.SearchTransaction();
+                        //if (!req.IsSuccessful)
+                        //{
+                        //    lock (errors)
+                        //    {
+                        //        errors.AddRange(req.Errors);
+                        //    }
+                        //    return;
+                        //}
+
+
+                        //foreach (var item in req.Transactions)
+                        //{
+                        //    transactions.Add(item);
+                        //}
+
+                        TransactionService req = TransactionService.SearchTransactionPersonal();
                         if (!req.IsSuccessful)
                         {
                             lock (errors)
@@ -106,8 +125,18 @@ namespace IDMONEY.IO.ViewModel
                             }
                             return;
                         }
-                        lstTransfers = req.Transactions;
+
+                        foreach (var item in req.Transactions)
+                        {
+                            transactions.Add(item);
+                        }
+                        lstTransfers = transactions;
                     }));
+
+                if (errors.Count > 0)
+                {
+                    ErrorHelper.ControlError(errors);
+                }
 
                 IsBusy = false;
             }

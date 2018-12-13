@@ -111,7 +111,7 @@ namespace IDMONEY.IO.Service
             var json = JsonConvert.SerializeObject(new
             {
                 Email = email,
-                Password = password.GenerateSHA512()
+                Password = password//.GenerateSHA512()
             });
 
             return await PutAsync<LoginService>(json, uri);

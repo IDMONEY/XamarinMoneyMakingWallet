@@ -37,5 +37,19 @@ namespace IDMONEY.IO.Service
 
             return await GetAsync<TransactionService>(uri, UserService.GetUser().Token);
         }
+
+        public static async Task<TransactionService> SearchTransactionPersonalAsync()
+        {
+            var uri = new Uri(APIDictionary.API_TransactionPersonal);
+
+            return await GetAsync<TransactionService>(uri, UserService.GetUser().Token);
+        }
+
+        public static TransactionService SearchTransactionPersonal()
+        {
+            var uri = new Uri(APIDictionary.API_TransactionPersonal);
+
+            return Get<TransactionService>(uri, UserService.GetUser().Token);
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 
 namespace IDMONEY.IO.Service
 {
@@ -24,6 +25,10 @@ namespace IDMONEY.IO.Service
         public long FromAccountId { get; set; }
 
         public long ToAccountId { get; set; }
+
+        public DateTime? RegistrationDate { get; set; }
+
+        public DateTime? ProcessingDate { get; set; }
 
     }
 }

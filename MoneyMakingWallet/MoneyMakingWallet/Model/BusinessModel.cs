@@ -15,6 +15,6 @@ namespace IDMONEY.IO.Model
         public string Image { get; set; }
         public string Description { get; set; }
         public string Name { get; set; }
-        public Account Account { get; set; }
+        public AccountModel Account { get; set; }
     }
 }
